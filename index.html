@@ -105,6 +105,32 @@ header a:hover {
   box-shadow: 0 0 25px #38bdf8;
 }
 
+/* BADGES */
+.badges {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.4);
+  color: #38bdf8;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.badge:hover {
+  background: #38bdf8;
+  color: black;
+  box-shadow: 0 0 15px #38bdf8;
+}
+
 /* SECCIONES */
 .section {
   padding: 80px 20px;
@@ -263,13 +289,20 @@ html {
 <!-- HERO -->
 <section id="inicio" class="hero fade-in">
 
-  <!-- 👇 AVATAR -->
   <img src="imagen-paraujoIab.png" class="avatar">
 
   <h1>Soy <span class="glow">paraujoIab</span></h1>
   <p>
     Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
   </p>
+
+  <!-- BADGES -->
+  <div class="badges">
+    <div class="badge">🧑‍💼 Minecraft Manager</div>
+    <div class="badge">🛡️ Control Profesional</div>
+    <div class="badge">+ 2 años de experiencia</div>
+  </div>
+
   <a href="#experiencia" class="btn">Ver experiencia</a>
 </section>
 
