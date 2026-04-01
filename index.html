@@ -38,6 +38,11 @@ header a {
   color: white;
   text-decoration: none;
   margin: 0 10px;
+  transition: 0.3s;
+}
+
+header a:hover {
+  color: #38bdf8;
 }
 
 /* HERO */
@@ -70,6 +75,8 @@ header a {
   border-radius: 10px;
   background: #38bdf8;
   color: black;
+  text-decoration: none;
+  display: inline-block;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -226,6 +233,9 @@ html {
   <h2>paraujoIab</h2>
   <nav>
     <a href="#inicio">Inicio</a>
+    <a href="#conocimientos">Conocimientos</a>
+    <a href="#caracteristicas">Características</a>
+    <a href="#opiniones">Opiniones</a>
     <a href="#experiencia">Experiencia</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -237,18 +247,18 @@ html {
   <p>
     Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
   </p>
-  <div class="btn" onclick="scrollToSection('experiencia')">Ver experiencia</div>
+  <a href="#experiencia" class="btn">Ver experiencia</a>
 </section>
 
 <!-- EXPLICACIONES -->
-<section class="section info fade-in">
+<section id="conocimientos" class="section info fade-in">
   <h1 class="glow">Explicación Conocimientos</h1>
   <p>
     Configuración de plugins como TAB, ChatManager, LuckPerms, Akropolis, etc.
   </p>
 </section>
 
-<section class="section info fade-in">
+<section id="caracteristicas" class="section info fade-in">
   <h1 class="glow">Explicación Características</h1>
   <p>
     • Organización del trabajo según prioridad<br>
@@ -257,7 +267,7 @@ html {
   </p>
 </section>
 
-<section class="section info fade-in">
+<section id="opiniones" class="section info fade-in">
   <h1 class="glow">Explicación Opiniones Personales</h1>
   <p>
     • Compromiso 24/7<br>
@@ -270,17 +280,17 @@ html {
   <h2 class="glow" style="text-align:center;margin-bottom:40px;">🔥 Experiencia (11 servidores)</h2>
 
   <div class="grid">
-    <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png"><h3>MineRush Network</h3></div>
-    <div class="card" onclick="openModal('MineChaos Network')"><img src="mine-chaos.png"><h3>MineChaos Network</h3></div>
-    <div class="card" onclick="openModal('MineGlow Network')"><img src="mine-glow.png"><h3>MineGlow Network</h3></div>
-    <div class="card" onclick="openModal('MineLow Network')"><img src="mine-low.png"><h3>MineLow Network</h3></div>
-    <div class="card" onclick="openModal('MineSkill Network')"><img src="mine-skill.png"><h3>MineSkill Network</h3></div>
-    <div class="card" onclick="openModal('MineDark Network')"><img src="mine-dark.png"><h3>MineDark Network</h3></div>
-    <div class="card" onclick="openModal('MineDash Network')"><img src="mine-dash.png"><h3>MineDash Network</h3></div>
-    <div class="card" onclick="openModal('EgoCraft Network')"><img src="ego-craft.png"><h3>EgoCraft Network</h3></div>
-    <div class="card" onclick="openModal('EskMC Network')"><img src="esk-mc.png"><h3>EskMC Network</h3></div>
-    <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png"><h3>KeniBox Network</h3></div>
-    <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png"><h3>MineIce Network</h3></div>
+    <div class="card" onclick="openModal('MineRush Network')"><img src="img/mine-rush.png"><h3>MineRush Network</h3></div>
+    <div class="card" onclick="openModal('MineChaos Network')"><img src="img/mine-chaos.png"><h3>MineChaos Network</h3></div>
+    <div class="card" onclick="openModal('MineGlow Network')"><img src="img/mine-glow.png"><h3>MineGlow Network</h3></div>
+    <div class="card" onclick="openModal('MineLow Network')"><img src="img/mine-low.png"><h3>MineLow Network</h3></div>
+    <div class="card" onclick="openModal('MineSkill Network')"><img src="img/mine-skill.png"><h3>MineSkill Network</h3></div>
+    <div class="card" onclick="openModal('MineDark Network')"><img src="img/mine-dark.png"><h3>MineDark Network</h3></div>
+    <div class="card" onclick="openModal('MineDash Network')"><img src="img/mine-dash.png"><h3>MineDash Network</h3></div>
+    <div class="card" onclick="openModal('EgoCraft Network')"><img src="img/ego-craft.png"><h3>EgoCraft Network</h3></div>
+    <div class="card" onclick="openModal('EskMC Network')"><img src="img/esk-mc.png"><h3>EskMC Network</h3></div>
+    <div class="card" onclick="openModal('KeniBox Network')"><img src="img/keni-box.png"><h3>KeniBox Network</h3></div>
+    <div class="card" onclick="openModal('MineIce Network')"><img src="img/mine-ice.png"><h3>MineIce Network</h3></div>
   </div>
 </section>
 
@@ -305,27 +315,23 @@ html {
 </div>
 
 <footer class="fade-in">
-  © 2026 paraujoIab
+  © 2026 paraujoIab - Todos los derechos reservados
 </footer>
 
 <script>
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView();
-}
-
-/* 🔥 DATA DE CADA NETWORK (EDITA AQUÍ) */
+/* DATA */
 const data = {
-  "MineRush Network": "LLegué como fundador junto a mi compañero Fakerki08 por mi experiencia en anteriores servidores en Agosto de 2024, llegamos a tener hasta 50 usuarios simultaneos pero tuve que salirme por diversos problemas con el dueño principal.",
-  "MineChaos Network": "Este fué un proyecto que realice con mi compañero Fakerkid08 el 17 de Marzo de 2024, el servidor tuve que cerrarlo por la falta de actividad de parte de los otros dueños y porque mi compañero decidio unirse con otra network, los cuales no les gustaba mi manera de organizar.",
-  "MineGlow Network": "👉 poner información de MineGlow",
-  "MineLow Network": "👉 poner información de MineLow",
-  "MineSkill Network": "👉 poner información de MineSkill",
-  "MineDark Network": "👉 poner información de MineDark",
-  "MineDash Network": "👉 poner información de MineDash",
-  "EgoCraft Network": "👉 poner información de EgoCraft",
-  "EskMC Network": "👉 poner información de EskMC",
-  "KeniBox Network": "👉 poner información de KeniBox",
-  "MineIce Network": "👉 poner información de MineIce"
+  "MineRush Network": "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
+  "MineChaos Network": "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
+  "MineGlow Network": "👉 poner información",
+  "MineLow Network": "👉 poner información",
+  "MineSkill Network": "👉 poner información",
+  "MineDark Network": "👉 poner información",
+  "MineDash Network": "👉 poner información",
+  "EgoCraft Network": "👉 poner información",
+  "EskMC Network": "👉 poner información",
+  "KeniBox Network": "👉 poner información",
+  "MineIce Network": "👉 poner información"
 };
 
 function openModal(name) {
