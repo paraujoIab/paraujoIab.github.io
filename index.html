@@ -19,6 +19,7 @@ body {
   margin-top: 80px;
 }
 
+/* NAV */
 header {
   position: fixed;
   top: 0;
@@ -46,6 +47,7 @@ header a:hover {
   color: #38bdf8;
 }
 
+/* HERO */
 .hero {
   height: calc(100vh - 80px);
   display: flex;
@@ -53,6 +55,23 @@ header a:hover {
   align-items: center;
   flex-direction: column;
   text-align: center;
+}
+
+/* AVATAR */
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #38bdf8;
+  box-shadow: 0 0 25px #38bdf8;
+  transition: 0.3s;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #38bdf8;
 }
 
 .hero h1 {
@@ -86,6 +105,7 @@ header a:hover {
   box-shadow: 0 0 25px #38bdf8;
 }
 
+/* SECCIONES */
 .section {
   padding: 80px 20px;
 }
@@ -108,6 +128,7 @@ header a:hover {
   opacity: 0.85;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
@@ -139,6 +160,7 @@ header a:hover {
   padding: 15px;
 }
 
+/* MODAL */
 .modal {
   position: fixed;
   top: 0;
@@ -184,6 +206,7 @@ header a:hover {
   cursor: pointer;
 }
 
+/* CONTACTO */
 .contact {
   max-width: 600px;
   margin: auto;
@@ -198,12 +221,14 @@ header a:hover {
   margin: 10px 0;
 }
 
+/* FOOTER */
 footer {
   text-align: center;
   padding: 30px;
   opacity: 0.6;
 }
 
+/* ANIMACIONES */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
@@ -235,7 +260,12 @@ html {
   </nav>
 </header>
 
+<!-- HERO -->
 <section id="inicio" class="hero fade-in">
+
+  <!-- 👇 AVATAR -->
+  <img src="imagen-paraujoIab.png" class="avatar">
+
   <h1>Soy <span class="glow">paraujoIab</span></h1>
   <p>
     Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
@@ -243,6 +273,7 @@ html {
   <a href="#experiencia" class="btn">Ver experiencia</a>
 </section>
 
+<!-- RESTO IGUAL -->
 <section id="conocimientos" class="section info fade-in">
   <h1 class="glow">Explicación Conocimientos</h1>
   <p>
@@ -267,6 +298,7 @@ html {
   </p>
 </section>
 
+<!-- EXPERIENCIA -->
 <section id="experiencia" class="section fade-in">
   <h2 class="glow" style="text-align:center;margin-bottom:40px;">🔥 Experiencia (11 servidores)</h2>
 
@@ -285,6 +317,7 @@ html {
   </div>
 </section>
 
+<!-- CONTACTO -->
 <section id="contacto" class="section fade-in">
   <h2 class="glow" style="text-align:center;margin-bottom:30px;">📩 Contacto</h2>
 
@@ -295,6 +328,7 @@ html {
   </div>
 </section>
 
+<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
     <h2 id="modal-title"></h2>
