@@ -84,6 +84,26 @@ header a {
   padding: 80px 20px;
 }
 
+/* INFO */
+.info {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.info h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
@@ -98,6 +118,7 @@ header a {
   border-radius: 20px;
   overflow: hidden;
   transition: 0.4s;
+  cursor: pointer;
 }
 
 .card img {
@@ -111,6 +132,52 @@ header a {
 
 .card h3 {
   padding: 15px;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 2000;
+}
+
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  text-align: center;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: #38bdf8;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* CONTACTO */
@@ -135,11 +202,22 @@ footer {
   opacity: 0.6;
 }
 
+/* ANIMACIONES */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 html {
   scroll-behavior: smooth;
 }
 </style>
-
 </head>
 
 <body>
@@ -152,66 +230,62 @@ html {
     <a href="#contacto">Contacto</a>
   </nav>
 </header>
-  
-<section id="inicio" class="hero">
+
+<!-- HERO -->
+<section id="inicio" class="hero fade-in">
   <h1>Soy <span class="glow">paraujoIab</span></h1>
   <p>
     Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
-    Experiencia gestionando comunidades, eventos y equipos de trabajo.
   </p>
   <div class="btn" onclick="scrollToSection('experiencia')">Ver experiencia</div>
 </section>
-<section id="inicio" class="hero">
-  <h1 class="glow" style="text-align:center;margin-bottom:20px;">Explicación Conocimientos</h1>
+
+<!-- EXPLICACIONES -->
+<section class="section info fade-in">
+  <h1 class="glow">Explicación Conocimientos</h1>
   <p>
-    Mi conocimiento sobre configuración de servidores se centra más que nada en los
-plugins, ejemplos cortos de lo que me refiero serian: Configuración de "TAB" "Chatmanager"
-"Luckperms" "Akropolis", etc. ﻿La verdad no se mucho sobre lo que es la
-creación de plugins personalizados sin embargo dentro de plugins ya creados puedo
-cambiarlos de modos únicos y diferentes. 
+    Configuración de plugins como TAB, ChatManager, LuckPerms, Akropolis, etc.
   </p>
 </section>
-<section id="inicio" class="hero">
-  <h1 class="glow" style="text-align:center;margin-bottom:20px;">Explicación Características</h1>
+
+<section class="section info fade-in">
+  <h1 class="glow">Explicación Características</h1>
   <p>
-   • Organización del trabajo dependiendo de la importancia y el peso. 
-    • Constancia. 
-    • Trabajo de manera automática. 
-    • Respeto por roles técnicos y creativos dentro de un equipo. 
-    • Sinceridad.
+    • Organización del trabajo según prioridad<br>
+    • Constancia<br>
+    • Respeto de roles<br>
   </p>
 </section>
-<section id="inicio" class="hero">
-  <h1 class="glow" style="text-align:center;margin-bottom:20px;">Explicación Opiniones Personales</h1>
+
+<section class="section info fade-in">
+  <h1 class="glow">Explicación Opiniones Personales</h1>
   <p>
-    • Me comprometería a estar 24/7 atento a las dudas de los staffs, users, medias,
-      etc.
-    • Soy alguien que le gusta ser divertido, aunque no me sabe muy bien que los
-      miembros del staff digan palabras como: “XD”, “:v”, etc.
+    • Compromiso 24/7<br>
+    • Ambiente profesional
   </p>
 </section>
-<section id="experiencia" class="section">
+
+<!-- EXPERIENCIA -->
+<section id="experiencia" class="section fade-in">
   <h2 class="glow" style="text-align:center;margin-bottom:40px;">🔥 Experiencia (11 servidores)</h2>
 
   <div class="grid">
-
-    <div class="card"><img src="mine-rush.png"><h3>MineRush Network</h3></div>
-    <div class="card"><img src="mine-chaos.png"><h3>MineChaos Network</h3></div>
-    <div class="card"><img src="mine-glow.png"><h3>MineGlow Network</h3></div>
-    <div class="card"><img src="mine-low.png"><h3>MineLow Network</h3></div>
-    <div class="card"><img src="mine-skill.png"><h3>MineSkill Network</h3></div>
-
-    <div class="card"><img src="mine-dark.png"><h3>MineDark Network</h3></div>
-    <div class="card"><img src="mine-dash.png"><h3>MineDash Network</h3></div>
-    <div class="card"><img src="ego-craft.png"><h3>EgoCraft Network</h3></div>
-    <div class="card"><img src="esk-mc.png"><h3>EskMC Network</h3></div>
-    <div class="card"><img src="keni-box.png"><h3>KeniBox Network</h3></div>
-    <div class="card"><img src="mine-ice.png"><h3>MineIce Network</h3></div>
-
+    <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png"><h3>MineRush Network</h3></div>
+    <div class="card" onclick="openModal('MineChaos Network')"><img src="mine-chaos.png"><h3>MineChaos Network</h3></div>
+    <div class="card" onclick="openModal('MineGlow Network')"><img src="mine-glow.png"><h3>MineGlow Network</h3></div>
+    <div class="card" onclick="openModal('MineLow Network')"><img src="mine-low.png"><h3>MineLow Network</h3></div>
+    <div class="card" onclick="openModal('MineSkill Network')"><img src="mine-skill.png"><h3>MineSkill Network</h3></div>
+    <div class="card" onclick="openModal('MineDark Network')"><img src="mine-dark.png"><h3>MineDark Network</h3></div>
+    <div class="card" onclick="openModal('MineDash Network')"><img src="mine-dash.png"><h3>MineDash Network</h3></div>
+    <div class="card" onclick="openModal('EgoCraft Network')"><img src="ego-craft.png"><h3>EgoCraft Network</h3></div>
+    <div class="card" onclick="openModal('EskMC Network')"><img src="esk-mc.png"><h3>EskMC Network</h3></div>
+    <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png"><h3>KeniBox Network</h3></div>
+    <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png"><h3>MineIce Network</h3></div>
   </div>
 </section>
 
-<section id="contacto" class="section">
+<!-- CONTACTO -->
+<section id="contacto" class="section fade-in">
   <h2 class="glow" style="text-align:center;margin-bottom:30px;">📩 Contacto</h2>
 
   <div class="contact">
@@ -221,14 +295,61 @@ cambiarlos de modos únicos y diferentes.
   </div>
 </section>
 
-<footer>
-  © 2026 paraujoIab - Todos los derechos reservados
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+    <div class="close" onclick="closeModal()">Cerrar</div>
+  </div>
+</div>
+
+<footer class="fade-in">
+  © 2026 paraujoIab
 </footer>
 
 <script>
 function scrollToSection(id) {
   document.getElementById(id).scrollIntoView();
 }
+
+/* 🔥 DATA DE CADA NETWORK (EDITA AQUÍ) */
+const data = {
+  "MineRush Network": "👉 poner información de MineRush",
+  "MineChaos Network": "👉 poner información de MineChaos",
+  "MineGlow Network": "👉 poner información de MineGlow",
+  "MineLow Network": "👉 poner información de MineLow",
+  "MineSkill Network": "👉 poner información de MineSkill",
+  "MineDark Network": "👉 poner información de MineDark",
+  "MineDash Network": "👉 poner información de MineDash",
+  "EgoCraft Network": "👉 poner información de EgoCraft",
+  "EskMC Network": "👉 poner información de EskMC",
+  "KeniBox Network": "👉 poner información de KeniBox",
+  "MineIce Network": "👉 poner información de MineIce"
+};
+
+function openModal(name) {
+  document.getElementById("modal-title").innerText = name;
+  document.getElementById("modal-text").innerText = data[name];
+  document.getElementById("modal").classList.add("active");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("active");
+}
+
+/* ANIMACIONES */
+const elements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+elements.forEach(el => observer.observe(el));
 </script>
 
 </body>
