@@ -6,148 +6,149 @@
 <title>paraujoIab | Portafolio</title>
 
 <style>
-/* --- RESET Y BASE --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
   background: radial-gradient(circle at top, #0f172a, #020617);
   color: white;
-  margin-top: 80px;
-  overflow-x: hidden;
 }
 
-/* --- NAVEGACIÓN --- */
+/* NAV */
 header {
   position: fixed;
-  top: 0;
   width: 100%;
-  padding: 20px 5%;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(12px);
-  background: rgba(2, 6, 23, 0.8);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.4);
   z-index: 1000;
 }
 
-header h2 { color: #38bdf8; font-size: 1.5rem; }
+header h2 {
+  color: #38bdf8;
+}
+
 header a {
   color: white;
   text-decoration: none;
-  margin-left: 20px;
+  margin: 0 10px;
   transition: 0.3s;
-  font-size: 0.95rem;
 }
-header a:hover { color: #38bdf8; }
 
-/* --- SECCIÓN EXPERIENCIA --- */
-.section {
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
+header a:hover {
+  color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
 }
 
 .glow {
   color: #38bdf8;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 2.5rem;
+  text-shadow: 0 0 25px #38bdf8;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+.hero p {
+  opacity: 0.7;
+  max-width: 600px;
 }
 
-/* --- TARJETAS (CARDS) --- */
-.card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column; /* Alineación vertical */
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
-  height: 100%;
-}
-
-.card:hover {
-  transform: translateY(-12px);
-  border-color: #38bdf8;
-  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-/* Contenedor del Logo */
-.card img {
-  width: 100%;
-  height: 200px; /* Altura fija para el área del logo */
-  object-fit: contain; /* IMPORTANTE: Mantiene el logo entero */
-  padding: 30px; /* Espacio para que el logo no toque los bordes */
-  background: rgba(0, 0, 0, 0.2);
-  transition: 0.4s;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 8px #38bdf8);
-}
-
-/* Contenedor de Texto y Botón */
-.card-content {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; /* Ocupa el espacio sobrante */
-  text-align: center;
-}
-
-.card-content h3 {
-  margin-bottom: 20px;
-  font-size: 1.25rem;
-  color: #f1f5f9;
-}
-
-/* BOTÓN (BADGE) AL FONDO */
-.badge-wrapper {
-  margin-top: auto; /* Empuja el botón al final de la card */
-  padding-bottom: 10px;
-}
-
-.badge {
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: black;
+  text-decoration: none;
   display: inline-block;
-  padding: 10px 24px;
-  border-radius: 999px;
-  background: rgba(249, 115, 22, 0.1);
-  border: 1px solid rgba(249, 115, 22, 0.4);
-  color: #f97316;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.card:hover .badge {
-  background: #f97316;
-  color: #000;
-  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #38bdf8;
 }
 
-/* --- MODAL --- */
+/* SECCIONES */
+.section {
+  padding: 80px 20px;
+}
+
+/* INFO */
+.info {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.info h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 0 40px rgba(56,189,248,0.6);
+}
+
+.card h3 {
+  padding: 15px;
+}
+
+/* MODAL */
 .modal {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,37 +158,62 @@ header a:hover { color: #38bdf8; }
   z-index: 2000;
 }
 
-.modal.active { visibility: visible; opacity: 1; }
+.modal.active {
+  visibility: visible;
+  opacity: 1;
+}
 
-.modal-body {
-  background: #0f172a;
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid #38bdf8;
-  max-width: 450px;
-  width: 90%;
+.modal-content {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  text-align: center;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: #38bdf8;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* CONTACTO */
+.contact {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
   text-align: center;
 }
 
-.close-btn {
-  margin-top: 30px;
-  padding: 12px 30px;
-  background: #38bdf8;
-  border: none;
-  border-radius: 12px;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+.contact p {
+  margin: 10px 0;
 }
 
-.close-btn:hover { transform: scale(1.05); }
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.6;
+}
 
-/* --- ANIMACIONES --- */
+/* ANIMACIONES */
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: 0.8s ease-out;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
 .fade-in.visible {
@@ -195,7 +221,9 @@ header a:hover { color: #38bdf8; }
   transform: translateY(0);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 </style>
 </head>
 
@@ -204,135 +232,130 @@ html { scroll-behavior: smooth; }
 <header>
   <h2>paraujoIab</h2>
   <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#conocimientos">Conocimientos</a>
+    <a href="#caracteristicas">Características</a>
+    <a href="#opiniones">Opiniones</a>
     <a href="#experiencia">Experiencia</a>
-    <a href="mailto:tu-correo@ejemplo.com">Contacto</a>
+    <a href="#contacto">Contacto</a>
   </nav>
 </header>
 
+<!-- HERO -->
+<section id="inicio" class="hero fade-in">
+  <h1>Soy <span class="glow">paraujoIab</span></h1>
+  <p>
+    Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
+  </p>
+  <a href="#experiencia" class="btn">Ver experiencia</a>
+</section>
+
+<!-- EXPLICACIONES -->
+<section id="conocimientos" class="section info fade-in">
+  <h1 class="glow">Explicación Conocimientos</h1>
+  <p>
+    Configuración de plugins como TAB, ChatManager, LuckPerms, Akropolis, etc.
+  </p>
+</section>
+
+<section id="caracteristicas" class="section info fade-in">
+  <h1 class="glow">Explicación Características</h1>
+  <p>
+    • Organización del trabajo según prioridad<br>
+    • Constancia<br>
+    • Respeto de roles<br>
+  </p>
+</section>
+
+<section id="opiniones" class="section info fade-in">
+  <h1 class="glow">Explicación Opiniones Personales</h1>
+  <p>
+    • Compromiso 24/7<br>
+    • Ambiente profesional
+  </p>
+</section>
+
+<!-- EXPERIENCIA -->
 <section id="experiencia" class="section fade-in">
-  <h2 class="glow">🔥 Experiencia (11 servidores)</h2>
-  
+  <h2 class="glow" style="text-align:center;margin-bottom:40px;">🔥 Experiencia (11 servidores)</h2>
+
   <div class="grid">
-    <div class="card" onclick="openModal('MineRush Network')">
-      <img src="mine-rush.png" alt="Logo MineRush">
-      <div class="card-content">
-        <h3>MineRush Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Configurator</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineChaos Network')">
-      <img src="mine-chaos.png" alt="Logo MineChaos">
-      <div class="card-content">
-        <h3>MineChaos Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Administrator</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineGlow Network')">
-      <img src="mine-glow.png" alt="Logo MineGlow">
-      <div class="card-content">
-        <h3>MineGlow Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Developer</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineLow Network')">
-      <img src="mine-low.png">
-      <div class="card-content">
-        <h3>MineLow Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Builder</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineSkill Network')">
-      <img src="mine-skill.png">
-      <div class="card-content">
-        <h3>MineSkill Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Manager</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineDark Network')">
-      <img src="mine-dark.png">
-      <div class="card-content">
-        <h3>MineDark Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Staff</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineDash Network')">
-      <img src="mine-dash.png">
-      <div class="card-content">
-        <h3>MineDash Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Moderator</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('EgoCraft Network')">
-      <img src="ego-craft.png">
-      <div class="card-content">
-        <h3>EgoCraft Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Owner</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('EskMC Network')">
-      <img src="esk-mc.png">
-      <div class="card-content">
-        <h3>EskMC Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Technical</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('KeniBox Network')">
-      <img src="keni-box.png">
-      <div class="card-content">
-        <h3>KeniBox Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Helper</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineIce Network')">
-      <img src="mine-ice.png">
-      <div class="card-content">
-        <h3>MineIce Network</h3>
-        <div class="badge-wrapper"><span class="badge">🟢 Founder</span></div>
-      </div>
-    </div>
+    <div class="card" onclick="openModal('MineRush Network')"><img src="img/mine-rush.png"><h3>MineRush Network</h3></div>
+    <div class="card" onclick="openModal('MineChaos Network')"><img src="img/mine-chaos.png"><h3>MineChaos Network</h3></div>
+    <div class="card" onclick="openModal('MineGlow Network')"><img src="img/mine-glow.png"><h3>MineGlow Network</h3></div>
+    <div class="card" onclick="openModal('MineLow Network')"><img src="img/mine-low.png"><h3>MineLow Network</h3></div>
+    <div class="card" onclick="openModal('MineSkill Network')"><img src="img/mine-skill.png"><h3>MineSkill Network</h3></div>
+    <div class="card" onclick="openModal('MineDark Network')"><img src="img/mine-dark.png"><h3>MineDark Network</h3></div>
+    <div class="card" onclick="openModal('MineDash Network')"><img src="img/mine-dash.png"><h3>MineDash Network</h3></div>
+    <div class="card" onclick="openModal('EgoCraft Network')"><img src="img/ego-craft.png"><h3>EgoCraft Network</h3></div>
+    <div class="card" onclick="openModal('EskMC Network')"><img src="img/esk-mc.png"><h3>EskMC Network</h3></div>
+    <div class="card" onclick="openModal('KeniBox Network')"><img src="img/keni-box.png"><h3>KeniBox Network</h3></div>
+    <div class="card" onclick="openModal('MineIce Network')"><img src="img/mine-ice.png"><h3>MineIce Network</h3></div>
   </div>
 </section>
 
-<div id="modal" class="modal">
-  <div class="modal-body">
-    <h2 id="modal-title" class="glow"></h2>
-    <p style="margin-top: 15px; line-height: 1.6; opacity: 0.8;">
-      Trabajo especializado en configuración de plugins, gestión de bases de datos y optimización de rendimiento para este servidor.
-    </p>
-    <button class="close-btn" onclick="closeModal()">Cerrar Ventana</button>
+<!-- CONTACTO -->
+<section id="contacto" class="section fade-in">
+  <h2 class="glow" style="text-align:center;margin-bottom:30px;">📩 Contacto</h2>
+
+  <div class="contact">
+    <p>Discord: andyaleyt</p>
+    <p>Email: araujoluna2021@gmail.com</p>
+    <p>Disponible para gestión de servidores y eventos</p>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+    <div class="close" onclick="closeModal()">Cerrar</div>
   </div>
 </div>
 
+<footer class="fade-in">
+  © 2026 paraujoIab - Todos los derechos reservados
+</footer>
+
 <script>
-// Funciones del Modal
+/* DATA */
+const data = {
+  "MineRush Network": "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
+  "MineChaos Network": "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
+  "MineGlow Network": "LLegué como Manager por mi experiencia en servidores anteriores, decidí salirme por la inactividad del servidor y la constante y extensa inactividad de los dueños.",
+  "MineLow Network": "Minelow es el servidor donde actualmente me encuentro trabajando como Sr Mod, ingrese el 19 de Diciembre del 2025, Este servidor me ha dado una gran cantidad de experiencia y siempre lo recordare con cariño.",
+  "MineSkill Network": "MineSkill es el servidor donde entre como Manager por mi experiencia en comandos y organizador de el equipo de staff, actualmente no me encuentro como manager debido a que el servidor fue cerrado ya que el owner no generaba ganancias y no le convenia seguir con el server.",
+  "MineDark Network": "Ingrese a MineDark Network como manager por mi experiencia y mis conocimientos, actualmente llevo 1 semana en el cargo y me he encargado de sacar a 2 staff que abusaban de la confianza del dueño, lo que lo ayudo mucho.",
+  "MineDash Network": "MineDash es el proyecto donde me encuentro como Owner, debido a que junto a la administración decidimos unir kenibox con MineDash junto al streamer TheElivan. ",
+  "EgoCraft Network": "EgoCraft es el servidor donde entre como Manager por mi experiencia en comandos y organizador de el equipo de staff, actualmente me encuentro todavía como manager aunque el servidor no ha abierto.",
+  "EskMC Network": "EskMC es un servidor box pvp donde entre directamente como Administrador por mi experiencia como staff y manager. Ademas de los servidores donde he trabajado.",
+  "KeniBox Network": "Kenibox es el proyecto donde actualmente me encuentro como Owner junto a legendario, quien también es dueño de MineLow, entre como founder por mi experiencia en plugins y su configuración, además de tenerme una gran confianza.",
+  "MineIce Network": "Ingrese a MineIce Network como Administrador por mi experiencia y mis conocimientos, además de que uno de los dueños ya había trabajado conmigo anteriormente. Actualmenteno estoy muy online porque el servidor no tiene gente."
+};
+
 function openModal(name) {
-  document.getElementById('modal-title').innerText = name;
-  document.getElementById('modal').classList.add('active');
-}
-function closeModal() {
-  document.getElementById('modal').classList.remove('active');
+  document.getElementById("modal-title").innerText = name;
+  document.getElementById("modal-text").innerText = data[name];
+  document.getElementById("modal").classList.add("active");
 }
 
-// Efecto de aparición (Fade In)
-const observer = new IntersectionObserver((entries) => {
+function closeModal() {
+  document.getElementById("modal").classList.remove("active");
+}
+
+/* ANIMACIONES */
+const elements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
+    if(entry.isIntersecting){
       entry.target.classList.add('visible');
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.2 });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+elements.forEach(el => observer.observe(el));
 </script>
 
 </body>
