@@ -10,171 +10,307 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: white;
-  margin-top: 80px;
+  background-color: #020617;
+  background-image: radial-gradient(circle at top, #0f172a, #020617);
+  color: #ffffff;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* NAV */
+/* --- HEADER --- */
 header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  padding: 20px;
+  padding: 20px 5%;
   display: flex;
   justify-content: space-between;
-  backdrop-filter: blur(10px);
-  background: rgba(2, 6, 23, 0.8);
+  align-items: center;
+  background-color: rgba(2, 6, 23, 0.92);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
   z-index: 1000;
 }
 
 header h2 {
   color: #38bdf8;
+  font-size: 1.5rem;
 }
 
-header a {
-  color: white;
+nav a {
+  color: #ffffff;
   text-decoration: none;
-  margin: 0 10px;
-  transition: 0.3s;
+  margin-left: 16px;
+  font-size: 0.9rem;
+  transition: color 0.3s;
 }
 
-header a:hover {
+nav a:hover {
   color: #38bdf8;
 }
 
-/* HERO */
+/* --- HERO --- */
 .hero {
-  height: calc(100vh - 80px);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 20px;
+  gap: 0;
 }
 
 /* AVATAR */
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+}
+
 .avatar {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 20px;
   border: 3px solid #38bdf8;
-  box-shadow: 0 0 25px #38bdf8;
-  transition: 0.3s;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(56, 189, 248, 0.15);
+  display: block;
+  transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .avatar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #38bdf8;
+  transform: scale(1.06);
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.6), 0 0 80px rgba(56, 189, 248, 0.2);
+}
+
+/* Anillo animado alrededor del avatar */
+.avatar-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  animation: pulse-ring 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50%       { transform: scale(1.08); opacity: 0.9; }
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin-bottom: 16px;
 }
 
 .glow {
   color: #38bdf8;
-  text-shadow: 0 0 25px #38bdf8;
+  text-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
 }
 
 .hero p {
-  opacity: 0.7;
+  opacity: 0.75;
   max-width: 600px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 28px;
 }
 
 .btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 10px;
+  padding: 12px 28px;
+  border-radius: 12px;
   background: #38bdf8;
-  color: black;
+  color: #000000;
   text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
   display: inline-block;
-  cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #38bdf8;
+  transform: scale(1.08);
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
 }
 
-/* SECCIONES */
+/* --- SECCIONES GENERALES --- */
 .section {
   padding: 80px 20px;
 }
 
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+/* --- INFO --- */
 .info {
   max-width: 900px;
   margin: auto;
   text-align: center;
-  padding: 60px 20px;
 }
 
 .info h1 {
   font-size: 2rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .info p {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* --- GRID EXPERIENCIA --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* --- CARDS --- */
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              border-color 0.3s,
+              box-shadow 0.3s,
+              background 0.3s;
+  cursor: pointer;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-12px);
+  border-color: #38bdf8;
+  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s, filter 0.4s;
+  display: block;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px #38bdf8);
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.card-content h3 {
+  margin-bottom: 20px;
+  font-size: 1.15rem;
+  color: #f1f5f9;
+}
+
+.badge-wrapper {
+  margin-top: auto;
+  padding-bottom: 10px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #f97316;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover .badge {
+  background: #f97316;
+  color: #000000;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+/* --- CONTACTO --- */
+.contact-box {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+}
+
+.contact-box p {
+  margin: 12px 0;
   font-size: 1rem;
   line-height: 1.6;
   opacity: 0.85;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: auto;
+.contact-box a {
+  color: #38bdf8;
+  text-decoration: none;
 }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: 0.4s;
-  cursor: pointer;
+.contact-box a:hover {
+  text-decoration: underline;
 }
 
-.card img {
-  width: 100%;
-  display: block;
+/* --- FOOTER --- */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  opacity: 0.5;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.card:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 0 40px rgba(56,189,248,0.6);
-}
-
-.card h3 {
-  padding: 15px;
-}
-
-/* MODAL */
+/* --- MODAL --- */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.88);
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
   z-index: 2000;
+  padding: 20px;
 }
 
 .modal.active {
@@ -182,72 +318,66 @@ header a:hover {
   opacity: 1;
 }
 
-.modal-content {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 400px;
+.modal-body {
+  background: #0f172a;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid #38bdf8;
+  max-width: 480px;
+  width: 100%;
   text-align: center;
   animation: pop 0.3s ease;
 }
 
 @keyframes pop {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
 }
 
-.close {
-  margin-top: 15px;
-  padding: 8px 15px;
+.modal-body h2 {
+  margin-bottom: 16px;
+}
+
+.modal-body p {
+  line-height: 1.7;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.close-btn {
+  margin-top: 28px;
+  padding: 12px 30px;
   background: #38bdf8;
-  color: black;
-  border-radius: 10px;
+  border: none;
+  border-radius: 12px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
+  transition: transform 0.3s;
 }
 
-/* CONTACTO */
-.contact {
-  max-width: 600px;
-  margin: auto;
-  background: rgba(255,255,255,0.05);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(15px);
-  text-align: center;
+.close-btn:hover {
+  transform: scale(1.05);
 }
 
-.contact p {
-  margin: 10px 0;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  opacity: 0.6;
-}
-
-/* ANIMACIONES */
+/* --- FADE IN --- */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
-  transition: all 0.8s ease;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
-html {
-  scroll-behavior: smooth;
-}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
   <h2>paraujoIab</h2>
   <nav>
@@ -260,14 +390,13 @@ html {
   </nav>
 </header>
 
+<!-- HERO -->
 <section id="inicio" class="hero fade-in">
-
-  <img src="imagen-paraujoIab.png" class="avatar">
-
+  <div class="avatar-wrapper">
+    <img src="imagen-paraujolab.png" alt="Avatar paraujoIab" class="avatar">
+  </div>
   <h1>Soy <span class="glow">paraujoIab</span></h1>
-  <p>
-    Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
-  </p>
+  <p>Manager, organizador de eventos y organizador de staff en servidores de Minecraft.</p>
   <a href="#experiencia" class="btn">Ver experiencia</a>
 </section>
 
@@ -300,9 +429,9 @@ html {
   <p>
     • Me comprometería a estar 24/7 atento a las dudas de los<br>
       staffs, users, medias, etc.<br>
-    • Soy alguien que le gusta ser divertido, aunque no me <br>
-      sabe muy bien que los miembros del staff digan palabras <br>
-      como: “XD”, “:v”, etc.
+    • Soy alguien que le gusta ser divertido, aunque no me<br>
+      sabe muy bien que los miembros del staff digan palabras<br>
+      como: "XD", ":v", etc.
   </p>
 </section>
 
@@ -313,7 +442,7 @@ html {
   <div class="grid">
 
     <div class="card" onclick="openModal('MineRush Network')">
-      <img src="img/mine-rush.png" alt="Logo MineRush">
+      <img src="mine-rush.png" alt="Logo MineRush">
       <div class="card-content">
         <h3>MineRush Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Founder</span></div>
@@ -321,7 +450,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('MineChaos Network')">
-      <img src="img/mine-chaos.png" alt="Logo MineChaos">
+      <img src="mine-chaos.png" alt="Logo MineChaos">
       <div class="card-content">
         <h3>MineChaos Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Founder</span></div>
@@ -329,7 +458,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('MineGlow Network')">
-      <img src="img/mine-glow.png" alt="Logo MineGlow">
+      <img src="mine-glow.png" alt="Logo MineGlow">
       <div class="card-content">
         <h3>MineGlow Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Manager</span></div>
@@ -337,7 +466,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('MineLow Network')">
-      <img src="img/mine-low.png" alt="Logo MineLow">
+      <img src="mine-low.png" alt="Logo MineLow">
       <div class="card-content">
         <h3>MineLow Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Sr Mod</span></div>
@@ -345,7 +474,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('MineSkill Network')">
-      <img src="img/mine-skill.png" alt="Logo MineSkill">
+      <img src="mine-skill.png" alt="Logo MineSkill">
       <div class="card-content">
         <h3>MineSkill Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Manager</span></div>
@@ -353,7 +482,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('MineDark Network')">
-      <img src="img/mine-dark.png" alt="Logo MineDark">
+      <img src="mine-dark.png" alt="Logo MineDark">
       <div class="card-content">
         <h3>MineDark Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Manager</span></div>
@@ -361,7 +490,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('MineDash Network')">
-      <img src="img/mine-dash.png" alt="Logo MineDash">
+      <img src="mine-dash.png" alt="Logo MineDash">
       <div class="card-content">
         <h3>MineDash Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Owner</span></div>
@@ -369,7 +498,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('EgoCraft Network')">
-      <img src="img/ego-craft.png" alt="Logo EgoCraft">
+      <img src="ego-craft.png" alt="Logo EgoCraft">
       <div class="card-content">
         <h3>EgoCraft Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Manager</span></div>
@@ -377,7 +506,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('EskMC Network')">
-      <img src="img/esk-mc.png" alt="Logo EskMC">
+      <img src="esk-mc.png" alt="Logo EskMC">
       <div class="card-content">
         <h3>EskMC Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Administrador</span></div>
@@ -385,7 +514,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('KeniBox Network')">
-      <img src="img/keni-box.png" alt="Logo KeniBox">
+      <img src="keni-box.png" alt="Logo KeniBox">
       <div class="card-content">
         <h3>KeniBox Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Owner</span></div>
@@ -393,7 +522,7 @@ html {
     </div>
 
     <div class="card" onclick="openModal('MineIce Network')">
-      <img src="img/mine-ice.png" alt="Logo MineIce">
+      <img src="mine-ice.png" alt="Logo MineIce">
       <div class="card-content">
         <h3>MineIce Network</h3>
         <div class="badge-wrapper"><span class="badge">🟢 Administrador</span></div>
