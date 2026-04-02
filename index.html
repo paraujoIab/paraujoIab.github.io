@@ -6,20 +6,21 @@
 <title>paraujoIab | Portafolio</title>
 
 <style>
+/* --- ESTILOS ORIGINALES Y CORRECCIONES --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
   background: radial-gradient(circle at top, #0f172a, #020617);
   color: white;
   margin-top: 80px;
+  overflow-x: hidden;
 }
 
-/* NAV */
 header {
   position: fixed;
   top: 0;
@@ -27,27 +28,23 @@ header {
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   backdrop-filter: blur(10px);
   background: rgba(2, 6, 23, 0.8);
   z-index: 1000;
 }
 
-header h2 {
-  color: #38bdf8;
-}
-
+header h2 { color: #38bdf8; }
 header a {
   color: white;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 15px;
   transition: 0.3s;
+  font-weight: 500;
 }
+header a:hover { color: #38bdf8; }
 
-header a:hover {
-  color: #38bdf8;
-}
-
-/* HERO */
+/* HERO SECTION */
 .hero {
   height: calc(100vh - 80px);
   display: flex;
@@ -55,9 +52,9 @@ header a:hover {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 20px;
 }
 
-/* AVATAR */
 .avatar {
   width: 140px;
   height: 140px;
@@ -67,44 +64,11 @@ header a:hover {
   border: 3px solid #38bdf8;
   box-shadow: 0 0 25px #38bdf8;
   transition: 0.3s;
+  background: #1e293b; /* Fondo temporal si no hay imagen */
 }
 
-.avatar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #38bdf8;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-}
-
-/* CAMBIADO A NARANJA */
-.glow {
-  color: orange;
-  text-shadow: 0 0 25px orange;
-}
-
-.hero p {
-  opacity: 0.7;
-  max-width: 600px;
-}
-
-.btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 10px;
-  background: #38bdf8;
-  color: black;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #38bdf8;
-}
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.glow { color: #38bdf8; text-shadow: 0 0 20px rgba(56,189,248,0.5); }
 
 /* BADGES */
 .badges {
@@ -118,50 +82,26 @@ header a:hover {
 .badge {
   padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(56,189,248,0.1);
-  border: 1px solid rgba(56,189,248,0.4);
-  color: #38bdf8;
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.4);
+  color: #f97316;
   font-size: 0.9rem;
-  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 
 .badge:hover {
-  background: #38bdf8;
+  background: #f97316;
   color: black;
-  box-shadow: 0 0 15px #38bdf8;
+  box-shadow: 0 0 15px #f97316;
 }
 
-/* SECCIONES */
-.section {
-  padding: 80px 20px;
-}
-
-.info {
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.info h1 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-.info p {
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.85;
-}
-
-/* GRID */
+/* GRID & CARDS */
+.section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-  max-width: 1200px;
-  margin: auto;
+  margin-top: 40px;
 }
 
 .card {
@@ -172,42 +112,28 @@ header a:hover {
   transition: 0.4s;
   cursor: pointer;
   text-align: center;
+  padding-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.card img {
-  width: 100%;
-  display: block;
+.card img { 
+  width: 100%; 
+  height: 150px; 
+  object-fit: cover; 
+  background: #1e293b;
 }
 
 .card:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 0 40px rgba(255,165,0,0.6);
-}
-
-.card h3 {
-  padding: 10px 15px 5px;
-}
-
-/* BOTÓN ONLINE */
-.status {
-  display: inline-block;
-  margin-bottom: 15px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255,165,0,0.15);
-  border: 1px solid rgba(255,165,0,0.5);
-  color: orange;
-  font-size: 0.8rem;
+  transform: translateY(-10px);
+  box-shadow: 0 0 40px rgba(56,189,248,0.3);
+  border-color: #38bdf8;
 }
 
 /* MODAL */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,62 +143,31 @@ header a:hover {
   z-index: 2000;
 }
 
-.modal.active {
-  visibility: visible;
-  opacity: 1;
-}
-
+.modal.active { visibility: visible; opacity: 1; }
 .modal-content {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
-  padding: 30px;
+  background: #0f172a;
+  padding: 40px;
   border-radius: 20px;
+  border: 1px solid #38bdf8;
   max-width: 400px;
   text-align: center;
-  animation: pop 0.3s ease;
 }
 
-@keyframes pop {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.close {
-  margin-top: 15px;
-  padding: 8px 15px;
+.btn-close {
+  margin-top: 20px;
+  padding: 10px 20px;
   background: #38bdf8;
-  color: black;
-  border-radius: 10px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
 }
 
-/* CONTACTO */
-.contact {
-  max-width: 600px;
-  margin: auto;
-  background: rgba(255,255,255,0.05);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(15px);
-  text-align: center;
-}
-
-.contact p {
-  margin: 10px 0;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  opacity: 0.6;
-}
-
-/* ANIMACIONES */
+/* ANIMATION */
 .fade-in {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
+  transform: translateY(30px);
+  transition: 0.8s ease-out;
 }
 
 .fade-in.visible {
@@ -280,9 +175,7 @@ footer {
   transform: translateY(0);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 </style>
 </head>
 
@@ -292,46 +185,82 @@ html {
   <h2>paraujoIab</h2>
   <nav>
     <a href="#inicio">Inicio</a>
-    <a href="#conocimientos">Conocimientos</a>
-    <a href="#caracteristicas">Características</a>
-    <a href="#opiniones">Opiniones</a>
     <a href="#experiencia">Experiencia</a>
     <a href="#contacto">Contacto</a>
   </nav>
 </header>
 
 <section id="inicio" class="hero fade-in">
-  <img src="imagen-paraujoIab.png" class="avatar">
-  <h1>Soy <span class="glow">paraujoIab</span></h1>
-  <p>Manager, organizador de eventos y organizador de staff en servidores de Minecraft.</p>
-
+  <div class="avatar"></div> <h1>Hola, soy <span class="glow">paraujoIab</span></h1>
+  <p>Desarrollador de Python y Especialista en Configuración de Servidores Minecraft.</p>
   <div class="badges">
-    <div class="badge">🧑‍💼 Minecraft Manager</div>
-    <div class="badge">🛡️ Control Profesional</div>
-    <div class="badge">+ 2 años de experiencia</div>
+    <div class="badge">Python Developer</div>
+    <div class="badge">Minecraft Specialist</div>
+    <div class="badge">Community Manager</div>
   </div>
-
-  <a href="#experiencia" class="btn">Ver experiencia</a>
 </section>
 
-<!-- EXPERIENCIA -->
 <section id="experiencia" class="section fade-in">
-  <h2 class="glow" style="text-align:center;margin-bottom:40px;">🔥 Experiencia (11 servidores)</h2>
-
+  <h2 class="glow" style="text-align:center;">🔥 Experiencia (11 servidores)</h2>
   <div class="grid">
-    <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png"><h3>MineRush Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('MineChaos Network')"><img src="mine-chaos.png"><h3>MineChaos Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('MineGlow Network')"><img src="mine-glow.png"><h3>MineGlow Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('MineLow Network')"><img src="mine-low.png"><h3>MineLow Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('MineSkill Network')"><img src="mine-skill.png"><h3>MineSkill Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('MineDark Network')"><img src="mine-dark.png"><h3>MineDark Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('MineDash Network')"><img src="mine-dash.png"><h3>MineDash Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('EgoCraft Network')"><img src="ego-craft.png"><h3>EgoCraft Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('EskMC Network')"><img src="esk-mc.png"><h3>EskMC Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png"><h3>KeniBox Network</h3><div class="status">🟢 Online</div></div>
-    <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png"><h3>MineIce Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png"><h3>MineRush Network</h3><div class="badge">🟢 Configurator</div></div>
+    <div class="card" onclick="openModal('MineChaos Network')"><img src="mine-chaos.png"><h3>MineChaos Network</h3><div class="badge">🟢 Manager</div></div>
+    <div class="card" onclick="openModal('MineGlow Network')"><img src="mine-glow.png"><h3>MineGlow Network</h3><div class="badge">🟢 Developer</div></div>
+    <div class="card" onclick="openModal('MineLow Network')"><img src="mine-low.png"><h3>MineLow Network</h3><div class="badge">🟢 Admin</div></div>
+    <div class="card" onclick="openModal('MineSkill Network')"><img src="mine-skill.png"><h3>MineSkill Network</h3><div class="badge">🟢 Helper</div></div>
+    <div class="card" onclick="openModal('MineDark Network')"><img src="mine-dark.png"><h3>MineDark Network</h3><div class="badge">🟢 Configurator</div></div>
+    <div class="card" onclick="openModal('MineDash Network')"><img src="mine-dash.png"><h3>MineDash Network</h3><div class="badge">🟢 Staff</div></div>
+    <div class="card" onclick="openModal('EgoCraft Network')"><img src="ego-craft.png"><h3>EgoCraft Network</h3><div class="badge">🟢 Owner</div></div>
+    <div class="card" onclick="openModal('EskMC Network')"><img src="esk-mc.png"><h3>EskMC Network</h3><div class="badge">🟢 Dev</div></div>
+    <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png"><h3>KeniBox Network</h3><div class="badge">🟢 Mod</div></div>
+    <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png"><h3>MineIce Network</h3><div class="badge">🟢 Founder</div></div>
   </div>
 </section>
+
+<section id="contacto" class="section fade-in" style="text-align: center;">
+  <h2 class="glow">📩 Contacto</h2>
+  <p style="margin-bottom: 20px;">¿Tienes un proyecto en mente?</p>
+  <a href="mailto:tu-correo@gmail.com" class="badge" style="font-size: 1.2rem; padding: 15px 30px;">Enviar Mensaje</a>
+</section>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h2 id="modal-title" class="glow"></h2>
+    <p style="margin-top: 15px;">Detalles sobre mi participación en este servidor y logros alcanzados.</p>
+    <button class="btn-close" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 paraujoIab - Hecho con pasión.</p>
+</footer>
+
+<script>
+// Función para abrir el modal
+function openModal(name) {
+  document.getElementById('modal-title').innerText = name;
+  document.getElementById('modal').classList.add('active');
+}
+
+// Función para cerrar el modal
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+}
+
+// Lógica para el efecto Fade-In al hacer scroll
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(section => {
+  observer.observe(section);
+});
+</script>
 
 </body>
 </html>
