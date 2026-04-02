@@ -10,266 +10,171 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  background-color: #020617;
-  background-image: radial-gradient(circle at top, #0f172a, #020617);
-  color: #ffffff;
-  overflow-x: hidden;
-  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+  margin-top: 80px;
 }
 
-/* --- HEADER --- */
+/* NAV */
 header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  padding: 20px 5%;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: rgba(2, 6, 23, 0.92);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.8);
   z-index: 1000;
 }
 
 header h2 {
   color: #38bdf8;
-  font-size: 1.5rem;
 }
 
-nav a {
-  color: #ffffff;
+header a {
+  color: white;
   text-decoration: none;
-  margin-left: 16px;
-  font-size: 0.9rem;
-  transition: color 0.3s;
+  margin: 0 10px;
+  transition: 0.3s;
 }
 
-nav a:hover {
+header a:hover {
   color: #38bdf8;
 }
 
-/* --- HERO --- */
+/* HERO */
 .hero {
-  height: 100vh;
+  height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+}
+
+/* AVATAR */
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #38bdf8;
+  box-shadow: 0 0 25px #38bdf8;
+  transition: 0.3s;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #38bdf8;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  margin-bottom: 16px;
+  font-size: 3.5rem;
 }
 
 .glow {
   color: #38bdf8;
-  text-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+  text-shadow: 0 0 25px #38bdf8;
 }
 
 .hero p {
-  opacity: 0.75;
+  opacity: 0.7;
   max-width: 600px;
-  line-height: 1.7;
-  font-size: 1.05rem;
-  margin-bottom: 28px;
 }
 
 .btn {
-  padding: 12px 28px;
-  border-radius: 12px;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 10px;
   background: #38bdf8;
-  color: #000000;
+  color: black;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.95rem;
   display: inline-block;
-  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #38bdf8;
 }
 
-/* --- SECCIONES GENERALES --- */
+/* SECCIONES */
 .section {
   padding: 80px 20px;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 48px;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-}
-
-/* --- INFO --- */
 .info {
   max-width: 900px;
   margin: auto;
   text-align: center;
+  padding: 60px 20px;
 }
 
 .info h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .info p {
-  font-size: 1rem;
-  line-height: 1.8;
-  opacity: 0.85;
-}
-
-/* --- GRID EXPERIENCIA --- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* --- CARDS --- */
-.card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              border-color 0.3s,
-              box-shadow 0.3s,
-              background 0.3s;
-  cursor: pointer;
-  height: 100%;
-}
-
-.card:hover {
-  transform: translateY(-12px);
-  border-color: #38bdf8;
-  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.2);
-  transition: transform 0.4s, filter 0.4s;
-  display: block;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 8px #38bdf8);
-}
-
-.card-content {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  text-align: center;
-}
-
-.card-content h3 {
-  margin-bottom: 20px;
-  font-size: 1.15rem;
-  color: #f1f5f9;
-}
-
-.badge-wrapper {
-  margin-top: auto;
-  padding-bottom: 10px;
-}
-
-.badge {
-  display: inline-block;
-  padding: 10px 24px;
-  border-radius: 999px;
-  background: rgba(249, 115, 22, 0.1);
-  border: 1px solid rgba(249, 115, 22, 0.4);
-  color: #f97316;
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-}
-
-.card:hover .badge {
-  background: #f97316;
-  color: #000000;
-  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
-}
-
-/* --- CONTACTO --- */
-.contact-box {
-  max-width: 600px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(56, 189, 248, 0.15);
-  padding: 40px;
-  border-radius: 24px;
-  text-align: center;
-}
-
-.contact-box p {
-  margin: 12px 0;
   font-size: 1rem;
   line-height: 1.6;
   opacity: 0.85;
 }
 
-.contact-box a {
-  color: #38bdf8;
-  text-decoration: none;
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.contact-box a:hover {
-  text-decoration: underline;
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.4s;
+  cursor: pointer;
 }
 
-/* --- FOOTER --- */
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  opacity: 0.5;
-  font-size: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+.card img {
+  width: 100%;
+  display: block;
 }
 
-/* --- MODAL --- */
+.card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 0 40px rgba(56,189,248,0.6);
+}
+
+.card h3 {
+  padding: 15px;
+}
+
+/* MODAL */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition: 0.3s;
   z-index: 2000;
-  padding: 20px;
 }
 
 .modal.active {
@@ -277,66 +182,72 @@ footer {
   opacity: 1;
 }
 
-.modal-body {
-  background: #0f172a;
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid #38bdf8;
-  max-width: 480px;
-  width: 100%;
+.modal-content {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
   text-align: center;
   animation: pop 0.3s ease;
 }
 
 @keyframes pop {
-  from { transform: scale(0.8); opacity: 0; }
-  to   { transform: scale(1);   opacity: 1; }
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
-.modal-body h2 {
-  margin-bottom: 16px;
-}
-
-.modal-body p {
-  line-height: 1.7;
-  opacity: 0.85;
-  font-size: 0.95rem;
-}
-
-.close-btn {
-  margin-top: 28px;
-  padding: 12px 30px;
+.close {
+  margin-top: 15px;
+  padding: 8px 15px;
   background: #38bdf8;
-  border: none;
-  border-radius: 12px;
-  color: #000000;
-  font-weight: bold;
-  font-size: 1rem;
+  color: black;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s;
 }
 
-.close-btn:hover {
-  transform: scale(1.05);
+/* CONTACTO */
+.contact {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  text-align: center;
 }
 
-/* --- FADE IN --- */
+.contact p {
+  margin: 10px 0;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.6;
+}
+
+/* ANIMACIONES */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: all 0.8s ease;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+html {
+  scroll-behavior: smooth;
+}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
   <h2>paraujoIab</h2>
   <nav>
@@ -349,11 +260,14 @@ footer {
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="inicio" class="hero fade-in">
+
   <img src="imagen-paraujoIab.png" class="avatar">
+
   <h1>Soy <span class="glow">paraujoIab</span></h1>
-  <p>Manager, organizador de eventos y organizador de staff en servidores de Minecraft.</p>
+  <p>
+    Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
+  </p>
   <a href="#experiencia" class="btn">Ver experiencia</a>
 </section>
 
