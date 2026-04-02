@@ -78,9 +78,10 @@ header a:hover {
   font-size: 3.5rem;
 }
 
+/* CAMBIADO A NARANJA */
 .glow {
-  color: #38bdf8;
-  text-shadow: 0 0 25px #38bdf8;
+  color: orange;
+  text-shadow: 0 0 25px orange;
 }
 
 .hero p {
@@ -170,6 +171,7 @@ header a:hover {
   overflow: hidden;
   transition: 0.4s;
   cursor: pointer;
+  text-align: center;
 }
 
 .card img {
@@ -179,11 +181,23 @@ header a:hover {
 
 .card:hover {
   transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 0 40px rgba(56,189,248,0.6);
+  box-shadow: 0 0 40px rgba(255,165,0,0.6);
 }
 
 .card h3 {
-  padding: 15px;
+  padding: 10px 15px 5px;
+}
+
+/* BOTÓN ONLINE */
+.status {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,165,0,0.15);
+  border: 1px solid rgba(255,165,0,0.5);
+  color: orange;
+  font-size: 0.8rem;
 }
 
 /* MODAL */
@@ -286,17 +300,11 @@ html {
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="inicio" class="hero fade-in">
-
   <img src="imagen-paraujoIab.png" class="avatar">
-
   <h1>Soy <span class="glow">paraujoIab</span></h1>
-  <p>
-    Manager, organizador de eventos y organizador de staff en servidores de Minecraft.
-  </p>
+  <p>Manager, organizador de eventos y organizador de staff en servidores de Minecraft.</p>
 
-  <!-- BADGES -->
   <div class="badges">
     <div class="badge">🧑‍💼 Minecraft Manager</div>
     <div class="badge">🛡️ Control Profesional</div>
@@ -306,119 +314,24 @@ html {
   <a href="#experiencia" class="btn">Ver experiencia</a>
 </section>
 
-<!-- RESTO IGUAL -->
-<section id="conocimientos" class="section info fade-in">
-  <h1 class="glow">Conocimientos</h3>
-  <p>
-    Configuración de plugins como TAB, ChatManager, LuckPerms,<br>
-    Akropolis, etc.
-    En la parte de cración de puglins personalizados o<br> 
-    creados desde cero no tengo mucha experiencia.
-  </p>
-</section>
-
-<section id="caracteristicas" class="section info fade-in">
-  <h1 class="glow">Características</h3>
-  <p>
-    • Organización del trabajo según prioridad<br>
-    • Constancia<br>
-    • Respeto de roles<br>
-    • Compromiso 24/7<br>
-    • Ambiente profesional<br>
-    • Colaboración
-  </p>
-</section>
-
-<section id="opiniones" class="section info fade-in">
-  <h1 class="glow">Opiniones Personales</h3>
-  <p>
-    • Me comprometería a estar 24/7 atento a las dudas de los<br> 
-      staffs, users, medias, etc.<br>
-    • Soy alguien que le gusta ser divertido, aunque on me sabe muy bien que los<br>
-      miembros del staff digan palabras como: “XD”, “:v”, etc.
-  </p>
-</section>
-
 <!-- EXPERIENCIA -->
 <section id="experiencia" class="section fade-in">
   <h2 class="glow" style="text-align:center;margin-bottom:40px;">🔥 Experiencia (11 servidores)</h2>
 
   <div class="grid">
-    <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png"><h3>MineRush Network</h3></div>
-    <div class="card" onclick="openModal('MineChaos Network')"><img src="mine-chaos.png"><h3>MineChaos Network</h3></div>
-    <div class="card" onclick="openModal('MineGlow Network')"><img src="mine-glow.png"><h3>MineGlow Network</h3></div>
-    <div class="card" onclick="openModal('MineLow Network')"><img src="mine-low.png"><h3>MineLow Network</h3></div>
-    <div class="card" onclick="openModal('MineSkill Network')"><img src="mine-skill.png"><h3>MineSkill Network</h3></div>
-    <div class="card" onclick="openModal('MineDark Network')"><img src="mine-dark.png"><h3>MineDark Network</h3></div>
-    <div class="card" onclick="openModal('MineDash Network')"><img src="mine-dash.png"><h3>MineDash Network</h3></div>
-    <div class="card" onclick="openModal('EgoCraft Network')"><img src="ego-craft.png"><h3>EgoCraft Network</h3></div>
-    <div class="card" onclick="openModal('EskMC Network')"><img src="esk-mc.png"><h3>EskMC Network</h3></div>
-    <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png"><h3>KeniBox Network</h3></div>
-    <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png"><h3>MineIce Network</h3></div>
+    <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png"><h3>MineRush Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineChaos Network')"><img src="mine-chaos.png"><h3>MineChaos Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineGlow Network')"><img src="mine-glow.png"><h3>MineGlow Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineLow Network')"><img src="mine-low.png"><h3>MineLow Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineSkill Network')"><img src="mine-skill.png"><h3>MineSkill Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineDark Network')"><img src="mine-dark.png"><h3>MineDark Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineDash Network')"><img src="mine-dash.png"><h3>MineDash Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('EgoCraft Network')"><img src="ego-craft.png"><h3>EgoCraft Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('EskMC Network')"><img src="esk-mc.png"><h3>EskMC Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png"><h3>KeniBox Network</h3><div class="status">🟢 Online</div></div>
+    <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png"><h3>MineIce Network</h3><div class="status">🟢 Online</div></div>
   </div>
 </section>
-
-<!-- CONTACTO -->
-<section id="contacto" class="section fade-in">
-  <h2 class="glow" style="text-align:center;margin-bottom:30px;">📩 Contacto</h2>
-
-  <div class="contact">
-    <p>Discord: andyaleyt</p>
-    <p>Email: araujoluna2021@gmail.com</p>
-    <p>Disponible para gestión de servidores y eventos</p>
-  </div>
-</section>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h2 id="modal-title"></h2>
-    <p id="modal-text"></p>
-    <div class="close" onclick="closeModal()">Cerrar</div>
-  </div>
-</div>
-
-<footer class="fade-in">
-  © 2026 paraujoIab - Todos los derechos reservados
-</footer>
-
-<script>
-const data = {
-  "MineRush Network": "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
-  "MineChaos Network": "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
-  "MineGlow Network": "LLegué como Manager por mi experiencia en servidores anteriores, decidí salirme por la inactividad del servidor y la constante y extensa inactividad de los dueños.",
-  "MineLow Network": "Minelow es el servidor donde actualmente me encuentro trabajando como Sr Mod, ingrese el 19 de Diciembre del 2025, Este servidor me ha dado una gran cantidad de experiencia y siempre lo recordare con cariño.",
-  "MineSkill Network": "MineSkill es el servidor donde entre como Manager por mi experiencia en comandos y organizador de el equipo de staff, actualmente no me encuentro como manager debido a que el servidor fue cerrado ya que el owner no generaba ganancias y no le convenia seguir con el server.",
-  "MineDark Network": "Ingrese a MineDark Network como manager por mi experiencia y mis conocimientos, actualmente llevo 1 semana en el cargo y me he encargado de sacar a 2 staff que abusaban de la confianza del dueño, lo que lo ayudo mucho.",
-  "MineDash Network": "MineDash es el proyecto donde me encuentro como Owner, debido a que junto a la administración decidimos unir kenibox con MineDash junto al streamer TheElivan.",
-  "EgoCraft Network": "EgoCraft es el servidor donde entre como Manager por mi experiencia en comandos y organizador de el equipo de staff, actualmente me encuentro todavía como manager aunque el servidor no ha abierto.",
-  "EskMC Network": "EskMC es un servidor box pvp donde entre directamente como Administrador por mi experiencia como staff y manager. Ademas de los servidores donde he trabajado.",
-  "KeniBox Network": "Kenibox es el proyecto donde actualmente me encuentro como Owner junto a legendario, quien también es dueño de MineLow, entre como founder por mi experiencia en plugins y su configuración, además de tenerme una gran confianza.",
-  "MineIce Network": "Ingrese a MineIce Network como Administrador por mi experiencia y mis conocimientos, además de que uno de los dueños ya había trabajado conmigo anteriormente. Actualmenteno estoy muy online porque el servidor no tiene gente."
-};
-
-function openModal(name) {
-  document.getElementById("modal-title").innerText = name;
-  document.getElementById("modal-text").innerText = data[name];
-  document.getElementById("modal").classList.add("active");
-}
-
-function closeModal() {
-  document.getElementById("modal").classList.remove("active");
-}
-
-const elements = document.querySelectorAll('.fade-in');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.2 });
-
-elements.forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
