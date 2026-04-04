@@ -527,6 +527,70 @@ footer {
 
 .fill-blue { background: linear-gradient(90deg, #1d4ed8, #38bdf8); box-shadow: 0 0 8px rgba(56,189,248,0.5); }
 .fill-green { background: linear-gradient(90deg, #15803d, #4ade80); box-shadow: 0 0 8px rgba(74,222,128,0.5); }
+
+/* PROOF CARDS */
+.proof-card {
+  background: rgba(15,23,42,0.85);
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.175,0.885,0.32,1.275), border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.proof-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(56,189,248,0.5);
+  box-shadow: 0 16px 32px rgba(56,189,248,0.12);
+}
+
+.proof-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: rgba(0,0,0,0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.proof-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.proof-card:hover .proof-img-wrap img {
+  transform: scale(1.04);
+}
+
+.proof-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  color: rgba(148,163,184,0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.proof-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f97316;
+  border-top: 1px solid rgba(249,115,22,0.18);
+  letter-spacing: 0.3px;
+}
 </style>
 </head>
 <body>
@@ -537,11 +601,13 @@ footer {
   <h2>paraujoIab</h2>
   <nav>
     <a onclick="showPage('inicio')"          id="nav-inicio"          class="active">Inicio</a>
+    <a onclick="showPage('presentacion')"    id="nav-presentacion">Presentación</a>
+    <a onclick="showPage('habilidades')"     id="nav-habilidades">Habilidades</a>
     <a onclick="showPage('conocimientos')"   id="nav-conocimientos">Conocimientos</a>
     <a onclick="showPage('caracteristicas')" id="nav-caracteristicas">Características</a>
     <a onclick="showPage('opiniones')"       id="nav-opiniones">Opiniones</a>
     <a onclick="showPage('experiencia')"     id="nav-experiencia">Experiencia</a>
-    <a onclick="showPage('habilidades')"     id="nav-habilidades">Habilidades</a>
+    <a onclick="showPage('pruebas')"         id="nav-pruebas">Pruebas</a>
     <a onclick="showPage('contacto')"        id="nav-contacto">Contacto</a>
   </nav>
 </header>
@@ -586,7 +652,9 @@ footer {
   <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="conocimientos-cards">
     <div class="skill-card">
       <div class="skill-card-header">
-        <div class="skill-card-icon">⚙️</div>
+        <div class="skill-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
         <h3>Configuración de Plugins</h3>
       </div>
       <div class="skill-row">
@@ -608,7 +676,9 @@ footer {
     </div>
     <div class="skill-card">
       <div class="skill-card-header">
-        <div class="skill-card-icon">🗄️</div>
+        <div class="skill-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
         <h3>Administración de Servidores</h3>
       </div>
       <div class="skill-row">
@@ -646,7 +716,9 @@ footer {
   <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="caracteristicas-cards">
     <div class="skill-card">
       <div class="skill-card-header">
-        <div class="skill-card-icon">📋</div>
+        <div class="skill-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
         <h3>Organización & Gestión</h3>
       </div>
       <div class="skill-row">
@@ -664,7 +736,9 @@ footer {
     </div>
     <div class="skill-card">
       <div class="skill-card-header">
-        <div class="skill-card-icon">🤝</div>
+        <div class="skill-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        </div>
         <h3>Actitud & Compromiso</h3>
       </div>
       <div class="skill-row">
@@ -698,7 +772,9 @@ footer {
   <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="opiniones-cards">
     <div class="skill-card">
       <div class="skill-card-header">
-        <div class="skill-card-icon">💬</div>
+        <div class="skill-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
         <h3>Atención & Comunicación</h3>
       </div>
       <div class="skill-row">
@@ -716,7 +792,9 @@ footer {
     </div>
     <div class="skill-card">
       <div class="skill-card-header">
-        <div class="skill-card-icon">⚖️</div>
+        <div class="skill-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
         <h3>Conducta & Profesionalismo</h3>
       </div>
       <div class="skill-row">
@@ -738,7 +816,10 @@ footer {
 <!-- EXPERIENCIA -->
 <div id="page-experiencia" class="page">
   <section class="section">
-    <h2 class="glow section-title">🔥 Experiencia (11 servidores)</h2>
+    <h2 class="glow section-title">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:10px;margin-bottom:3px;color:#38bdf8;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+      Experiencia (11 servidores)
+    </h2>
     <div class="grid">
       <div class="card" onclick="openModal('MineRush Network')">
         <img src="mine-rush.png" alt="Logo MineRush">
@@ -824,7 +905,10 @@ footer {
 <!-- HABILIDADES -->
 <div id="page-habilidades" class="page">
   <section class="section">
-    <h2 class="glow section-title">🛡️ Habilidades</h2>
+    <h2 class="glow section-title">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:10px;margin-bottom:3px;color:#38bdf8;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Habilidades
+    </h2>
     <div class="skills-container">
       <div class="skill-item">
         <span class="skill-label">Control</span>
@@ -850,10 +934,244 @@ footer {
   </section>
 </div>
 
+<!-- PRUEBAS -->
+<div id="page-pruebas" class="page">
+  <section class="section">
+    <h2 class="glow section-title">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:10px;margin-bottom:3px;color:#38bdf8;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      Pruebas | Trabajos
+    </h2>
+
+    <!-- PRUEBAS DE RANGOS -->
+    <div style="max-width:1200px;margin:0 auto 48px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;padding:0 4px;">
+        <div style="width:4px;height:28px;background:#38bdf8;border-radius:999px;flex-shrink:0;"></div>
+        <h3 style="font-size:1.15rem;color:#f1f5f9;font-weight:700;">Pruebas de Rangos <span style="color:#38bdf8;">(5)</span></h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="prueba-rango-1.png" alt="Prueba rango 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>prueba-rango-1.png</span>
+            </div>
+          </div>
+          <div class="proof-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Prueba de Rango #1
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="prueba-rango-2.png" alt="Prueba rango 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>prueba-rango-2.png</span>
+            </div>
+          </div>
+          <div class="proof-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Prueba de Rango #2
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="prueba-rango-3.png" alt="Prueba rango 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>prueba-rango-3.png</span>
+            </div>
+          </div>
+          <div class="proof-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Prueba de Rango #3
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="prueba-rango-4.png" alt="Prueba rango 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>prueba-rango-4.png</span>
+            </div>
+          </div>
+          <div class="proof-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Prueba de Rango #4
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="prueba-rango-5.png" alt="Prueba rango 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>prueba-rango-5.png</span>
+            </div>
+          </div>
+          <div class="proof-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Prueba de Rango #5
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TRABAJOS REALIZADOS -->
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;padding:0 4px;">
+        <div style="width:4px;height:28px;background:#4ade80;border-radius:999px;flex-shrink:0;"></div>
+        <h3 style="font-size:1.15rem;color:#f1f5f9;font-weight:700;">Trabajos Realizados <span style="color:#4ade80;">(7)</span></h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="trabajo-1.png" alt="Trabajo 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>trabajo-1.png</span>
+            </div>
+          </div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Trabajo #1
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="trabajo-2.png" alt="Trabajo 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>trabajo-2.png</span>
+            </div>
+          </div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Trabajo #2
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="trabajo-3.png" alt="Trabajo 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>trabajo-3.png</span>
+            </div>
+          </div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Trabajo #3
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="trabajo-4.png" alt="Trabajo 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>trabajo-4.png</span>
+            </div>
+          </div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Trabajo #4
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="trabajo-5.png" alt="Trabajo 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>trabajo-5.png</span>
+            </div>
+          </div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Trabajo #5
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="trabajo-6.png" alt="Trabajo 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>trabajo-6.png</span>
+            </div>
+          </div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Trabajo #6
+          </div>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="trabajo-7.png" alt="Trabajo 7" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="proof-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>trabajo-7.png</span>
+            </div>
+          </div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Trabajo #7
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRESENTACIÓN -->
+<div id="page-presentacion" class="page">
+  <section class="section">
+    <h2 class="glow section-title">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:10px;margin-bottom:3px;color:#38bdf8;"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Presentación
+    </h2>
+    <div style="max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+
+      <div style="background: rgba(15,23,42,0.85); border: 1px solid rgba(56,189,248,0.2); border-radius: 20px; padding: 36px 40px; display: flex; gap: 20px; align-items: flex-start;">
+        <div style="font-size: 2rem; flex-shrink: 0; margin-top: 2px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <p style="font-size: 1.05rem; line-height: 1.85; color: #cbd5e1;">
+          Me presento, me llamo <strong style="color:#38bdf8;">Pablo</strong>, más conocido como <strong style="color:#38bdf8;">paraujoIab</strong>, y soy nuevo en el mundo del management. Trabajo como <strong style="color:#f1f5f9;">staff</strong>, <strong style="color:#f1f5f9;">manager</strong> y <strong style="color:#f1f5f9;">organizador de eventos</strong> de servidores.
+        </p>
+      </div>
+
+      <div style="background: rgba(15,23,42,0.85); border: 1px solid rgba(56,189,248,0.2); border-radius: 20px; padding: 36px 40px; display: flex; gap: 20px; align-items: flex-start;">
+        <div style="font-size: 2rem; flex-shrink: 0; margin-top: 2px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/></svg>
+        </div>
+        <p style="font-size: 1.05rem; line-height: 1.85; color: #cbd5e1;">
+          He trabajado en la mayoría de rangos, desde el más alto <strong style="color:#f97316;">Founder</strong> al más bajo <strong style="color:#f97316;">Soporte</strong>, por lo tanto tengo conocimiento de las <strong style="color:#f1f5f9;">limitaciones y permisos</strong> que debe tener cada rango.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
 <!-- CONTACTO -->
 <div id="page-contacto" class="page">
   <section class="section">
-    <h2 class="glow section-title">📩 Contacto</h2>
+    <h2 class="glow section-title">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:10px;margin-bottom:3px;color:#38bdf8;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Contacto
+    </h2>
     <div class="contact-box">
       <p>Disponible para gestión de servidores y eventos.<br>¡Contáctame por cualquiera de estas plataformas!</p>
       <div style="display:flex; flex-direction:column; gap:14px; margin-top:28px;">
