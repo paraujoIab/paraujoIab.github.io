@@ -13,10 +13,6 @@
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background-color: #020617;
   background-image: radial-gradient(circle at top, #0f172a, #020617);
@@ -25,11 +21,22 @@ body {
   min-height: 100vh;
 }
 
-/* --- HEADER --- */
+#particles-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+header, .page, footer, .modal {
+  position: relative;
+  z-index: 1;
+}
+
 header {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   padding: 20px 5%;
   display: flex;
@@ -40,67 +47,78 @@ header {
   z-index: 1000;
 }
 
-header h2 {
-  color: #38bdf8;
-  font-size: 1.5rem;
-}
+header h2 { color: #38bdf8; font-size: 1.5rem; }
 
 nav a {
-  color: #ffffff;
+  color: rgba(255,255,255,0.6);
   text-decoration: none;
-  margin-left: 16px;
+  margin-left: 14px;
   font-size: 0.9rem;
-  transition: color 0.3s;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
+  cursor: pointer;
 }
 
-nav a:hover {
+nav a:hover { color: #38bdf8; }
+
+nav a.active {
   color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(56, 189, 248, 0.07);
 }
 
-/* --- HERO --- */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-top: 80px;
+  animation: pageFade 0.5s ease;
+}
+
+.page.active { display: block; }
+
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .hero {
-  height: 100vh;
+  min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
   padding: 20px;
-  gap: 0;
 }
 
-/* AVATAR */
 .avatar-wrapper {
   position: relative;
   margin-bottom: 24px;
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 120px; height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #38bdf8;
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 30px rgba(56,189,248,0.4), 0 0 60px rgba(56,189,248,0.15);
   display: block;
   transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .avatar:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 40px rgba(56, 189, 248, 0.6), 0 0 80px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 40px rgba(56,189,248,0.6), 0 0 80px rgba(56,189,248,0.2);
 }
 
-/* Anillo animado alrededor del avatar */
 .avatar-wrapper::before {
   content: '';
   position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
   border-radius: 50%;
-  border: 2px solid rgba(56, 189, 248, 0.3);
+  border: 2px solid rgba(56,189,248,0.3);
   animation: pulse-ring 2.5s ease-in-out infinite;
 }
 
@@ -109,45 +127,70 @@ nav a:hover {
   50%       { transform: scale(1.08); opacity: 0.9; }
 }
 
-.hero h1 {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  margin-bottom: 16px;
-}
+.hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 16px; }
 
-.glow {
-  color: #38bdf8;
-  text-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
-}
+.glow { color: #38bdf8; text-shadow: 0 0 25px rgba(56,189,248,0.6); }
 
 .hero p {
   opacity: 0.75;
   max-width: 600px;
   line-height: 1.7;
   font-size: 1.05rem;
+  margin-bottom: 22px;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 28px;
 }
+
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  cursor: default;
+}
+
+.hero-tag:hover {
+  border-color: rgba(56, 189, 248, 0.6);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.07);
+}
+
+.hero-tag-icon { font-size: 1rem; }
 
 .btn {
   padding: 12px 28px;
   border-radius: 12px;
   background: #38bdf8;
-  color: #000000;
+  color: #000;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.95rem;
   display: inline-block;
   transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  border: none;
 }
 
 .btn:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 28px rgba(56,189,248,0.5);
 }
 
-/* --- SECCIONES GENERALES --- */
-.section {
-  padding: 80px 20px;
-}
+.section { padding: 60px 20px 80px; }
 
 .section-title {
   text-align: center;
@@ -155,25 +198,10 @@ nav a:hover {
   font-size: clamp(1.8rem, 4vw, 2.5rem);
 }
 
-/* --- INFO --- */
-.info {
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
+.info { max-width: 900px; margin: auto; text-align: center; }
+.info h1 { font-size: 2rem; margin-bottom: 20px; }
+.info p { font-size: 1rem; line-height: 1.8; opacity: 0.85; }
 
-.info h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.info p {
-  font-size: 1rem;
-  line-height: 1.8;
-  opacity: 0.85;
-}
-
-/* --- GRID EXPERIENCIA --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -182,18 +210,15 @@ nav a:hover {
   margin: auto;
 }
 
-/* --- CARDS --- */
 .card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 24px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              border-color 0.3s,
-              box-shadow 0.3s,
-              background 0.3s;
+  transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275),
+              border-color 0.3s, box-shadow 0.3s, background 0.3s;
   cursor: pointer;
   height: 100%;
 }
@@ -201,16 +226,15 @@ nav a:hover {
 .card:hover {
   transform: translateY(-12px);
   border-color: #38bdf8;
-  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
-  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(56,189,248,0.15);
+  background: rgba(255,255,255,0.05);
 }
 
 .card img {
-  width: 100%;
-  height: 200px;
+  width: 100%; height: 200px;
   object-fit: contain;
   padding: 30px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0,0,0,0.2);
   transition: transform 0.4s, filter 0.4s;
   display: block;
 }
@@ -228,23 +252,16 @@ nav a:hover {
   text-align: center;
 }
 
-.card-content h3 {
-  margin-bottom: 20px;
-  font-size: 1.15rem;
-  color: #f1f5f9;
-}
+.card-content h3 { margin-bottom: 20px; font-size: 1.15rem; color: #f1f5f9; }
 
-.badge-wrapper {
-  margin-top: auto;
-  padding-bottom: 10px;
-}
+.badge-wrapper { margin-top: auto; padding-bottom: 10px; }
 
 .badge {
   display: inline-block;
   padding: 10px 24px;
   border-radius: 999px;
-  background: rgba(249, 115, 22, 0.1);
-  border: 1px solid rgba(249, 115, 22, 0.4);
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.4);
   color: #f97316;
   font-size: 0.82rem;
   font-weight: 600;
@@ -255,54 +272,79 @@ nav a:hover {
 
 .card:hover .badge {
   background: #f97316;
-  color: #000000;
-  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+  color: #000;
+  box-shadow: 0 0 20px rgba(249,115,22,0.4);
 }
 
-/* --- CONTACTO --- */
+.skills-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.skill-item { display: flex; align-items: center; gap: 16px; }
+
+.skill-label {
+  min-width: 120px;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.skill-bar-bg {
+  flex: 1;
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8, #7dd3fc);
+  box-shadow: 0 0 10px rgba(56,189,248,0.6), 0 0 24px rgba(56,189,248,0.3);
+  transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.skill-percent {
+  min-width: 42px;
+  text-align: right;
+  font-size: 0.88rem;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
 .contact-box {
   max-width: 600px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(56,189,248,0.15);
   padding: 40px;
   border-radius: 24px;
   text-align: center;
 }
 
-.contact-box p {
-  margin: 12px 0;
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.85;
-}
+.contact-box p { margin: 12px 0; font-size: 1rem; line-height: 1.6; opacity: 0.85; }
+.contact-box a { color: #38bdf8; text-decoration: none; }
+.contact-box a:hover { text-decoration: underline; }
 
-.contact-box a {
-  color: #38bdf8;
-  text-decoration: none;
-}
-
-.contact-box a:hover {
-  text-decoration: underline;
-}
-
-/* --- FOOTER --- */
 footer {
   text-align: center;
   padding: 30px 20px;
   opacity: 0.5;
   font-size: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-/* --- MODAL --- */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.88);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.88);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -313,10 +355,7 @@ footer {
   padding: 20px;
 }
 
-.modal.active {
-  visibility: visible;
-  opacity: 1;
-}
+.modal.active { visibility: visible; opacity: 1; }
 
 .modal-body {
   background: #0f172a;
@@ -334,15 +373,8 @@ footer {
   to   { transform: scale(1);   opacity: 1; }
 }
 
-.modal-body h2 {
-  margin-bottom: 16px;
-}
-
-.modal-body p {
-  line-height: 1.7;
-  opacity: 0.85;
-  font-size: 0.95rem;
-}
+.modal-body h2 { margin-bottom: 16px; }
+.modal-body p { line-height: 1.7; opacity: 0.85; font-size: 0.95rem; }
 
 .close-btn {
   margin-top: 28px;
@@ -350,197 +382,457 @@ footer {
   background: #38bdf8;
   border: none;
   border-radius: 12px;
-  color: #000000;
+  color: #000;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-.close-btn:hover {
-  transform: scale(1.05);
+.close-btn:hover { transform: scale(1.05); }
+
+/* --- SKILL CARDS --- */
+.skill-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 48px auto 0;
 }
 
-/* --- FADE IN --- */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+.skill-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 20px;
+  padding: 28px 28px 24px;
 }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.12);
 }
+
+.skill-card-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.skill-card-header h3 {
+  font-size: 1.1rem;
+  color: #f1f5f9;
+  font-weight: 700;
+}
+
+.skill-row { margin-bottom: 18px; }
+.skill-row:last-child { margin-bottom: 0; }
+
+.skill-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+.skill-row-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.skill-row-label::before { content: '★'; color: #38bdf8; font-size: 0.8rem; }
+
+.skill-row-pct { font-size: 0.88rem; font-weight: 700; color: #38bdf8; }
+
+.skill-row-bar {
+  height: 7px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-row-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fill-blue { background: linear-gradient(90deg, #1d4ed8, #38bdf8); box-shadow: 0 0 8px rgba(56,189,248,0.5); }
+.fill-green { background: linear-gradient(90deg, #15803d, #4ade80); box-shadow: 0 0 8px rgba(74,222,128,0.5); }
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
+<canvas id="particles-canvas"></canvas>
+
 <header>
   <h2>paraujoIab</h2>
   <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#conocimientos">Conocimientos</a>
-    <a href="#caracteristicas">Características</a>
-    <a href="#opiniones">Opiniones</a>
-    <a href="#experiencia">Experiencia</a>
-    <a href="#contacto">Contacto</a>
+    <a onclick="showPage('inicio')"          id="nav-inicio"          class="active">Inicio</a>
+    <a onclick="showPage('conocimientos')"   id="nav-conocimientos">Conocimientos</a>
+    <a onclick="showPage('caracteristicas')" id="nav-caracteristicas">Características</a>
+    <a onclick="showPage('opiniones')"       id="nav-opiniones">Opiniones</a>
+    <a onclick="showPage('experiencia')"     id="nav-experiencia">Experiencia</a>
+    <a onclick="showPage('habilidades')"     id="nav-habilidades">Habilidades</a>
+    <a onclick="showPage('contacto')"        id="nav-contacto">Contacto</a>
   </nav>
 </header>
 
-<!-- HERO -->
-<section id="inicio" class="hero fade-in">
-  <div class="avatar-wrapper">
-    <img src="imagen-paraujoIab.png" alt="Avatar paraujoIab" class="avatar">
-  </div>
-  <h1>Soy <span class="glow">paraujoIab</span></h1>
-  <p>Manager, organizador de eventos y organizador de staff en servidores de Minecraft.</p>
-  <a href="#experiencia" class="btn">Ver experiencia</a>
-</section>
+<!-- INICIO -->
+<div id="page-inicio" class="page active">
+  <section class="hero">
+    <div class="avatar-wrapper">
+      <img src="imagen-paraujoIab.png" alt="Avatar paraujoIab" class="avatar">
+    </div>
+    <h1>Soy <span class="glow">paraujoIab</span></h1>
+    <p>Manager, organizador de eventos y organizador de staff en servidores de Minecraft.</p>
+
+    <div class="hero-tags">
+      <span class="hero-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Gestión de Servidores
+      </span>
+      <span class="hero-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        Control del Staff
+      </span>
+      <span class="hero-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Rendimiento del Staff
+      </span>
+    </div>
+
+    <button class="btn" onclick="showPage('experiencia')">Ver experiencia</button>
+  </section>
+</div>
 
 <!-- CONOCIMIENTOS -->
-<section id="conocimientos" class="section info fade-in">
-  <h1 class="glow">Explicación Conocimientos</h1>
-  <p>
-    Configuración de plugins como TAB, ChatManager, LuckPerms,<br>
-    Akropolis, y muchos más.<br>
-    Gestión de bases de datos, optimización de rendimiento y<br>
-    administración general de servidores de Minecraft.
-  </p>
-</section>
+<div id="page-conocimientos" class="page">
+  <section class="section info">
+    <h1 class="glow">Explicación Conocimientos</h1>
+    <p>
+      Configuración de plugins como TAB, ChatManager, LuckPerms,<br>
+      Akropolis, y muchos más.<br>
+      Gestión de bases de datos, optimización de rendimiento y<br>
+      administración general de servidores de Minecraft.
+    </p>
+  </section>
+
+  <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="conocimientos-cards">
+
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-card-icon">⚙️</div>
+        <h3>Configuración de Plugins</h3>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">TAB & ChatManager</span><span class="skill-row-pct">92%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="92"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">LuckPerms (permisos)</span><span class="skill-row-pct">90%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="90"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Akropolis & similares</span><span class="skill-row-pct">85%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="85"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Plugins de economía</span><span class="skill-row-pct">80%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="80"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-card-icon">🗄️</div>
+        <h3>Administración de Servidores</h3>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Gestión de bases de datos</span><span class="skill-row-pct">78%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="78"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Optimización de rendimiento</span><span class="skill-row-pct">88%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="88"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Configuración de BungeeCord/Velocity</span><span class="skill-row-pct">82%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="82"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Administración general</span><span class="skill-row-pct">95%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="95"></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- CARACTERÍSTICAS -->
-<section id="caracteristicas" class="section info fade-in">
-  <h1 class="glow">Explicación Características</h1>
-  <p>
-    • Organización del trabajo según prioridad<br>
-    • Constancia<br>
-    • Respeto de roles<br>
-    • Compromiso 24/7<br>
-    • Ambiente profesional
-  </p>
-</section>
+<div id="page-caracteristicas" class="page">
+  <section class="section info">
+    <h1 class="glow">Explicación Características</h1>
+    <p>
+      • Organización del trabajo según prioridad<br>
+      • Constancia<br>
+      • Respeto de roles<br>
+      • Compromiso 24/7<br>
+      • Ambiente profesional
+    </p>
+  </section>
+
+  <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="caracteristicas-cards">
+
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-card-icon">📋</div>
+        <h3>Organización & Gestión</h3>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Priorización de tareas</span><span class="skill-row-pct">95%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="95"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Constancia y disciplina</span><span class="skill-row-pct">93%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="93"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Respeto de jerarquías</span><span class="skill-row-pct">97%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="97"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-card-icon">🤝</div>
+        <h3>Actitud & Compromiso</h3>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Disponibilidad 24/7</span><span class="skill-row-pct">90%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="90"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Ambiente profesional</span><span class="skill-row-pct">94%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="94"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Trabajo en equipo</span><span class="skill-row-pct">92%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="92"></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- OPINIONES -->
-<section id="opiniones" class="section info fade-in">
-  <h1 class="glow">Explicación Opiniones Personales</h1>
-  <p>
-    • Me comprometería a estar 24/7 atento a las dudas de los<br>
-      staffs, users, medias, etc.<br>
-    • Soy alguien que le gusta ser divertido, aunque no me<br>
-      sabe muy bien que los miembros del staff digan palabras<br>
-      como: "XD", ":v", etc.
-  </p>
-</section>
+<div id="page-opiniones" class="page">
+  <section class="section info">
+    <h1 class="glow">Explicación Opiniones Personales</h1>
+    <p>
+      • Me comprometería a estar 24/7 atento a las dudas de los<br>
+        staffs, users, medias, etc.<br>
+      • Soy alguien que le gusta ser divertido, aunque no me<br>
+        sabe muy bien que los miembros del staff digan palabras<br>
+        como: "XD", ":v", etc.
+    </p>
+  </section>
+
+  <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="opiniones-cards">
+
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-card-icon">💬</div>
+        <h3>Atención & Comunicación</h3>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Respuesta a dudas del staff</span><span class="skill-row-pct">98%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="98"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Atención a usuarios</span><span class="skill-row-pct">95%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="95"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Soporte a medias & creadores</span><span class="skill-row-pct">90%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="90"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-card-icon">⚖️</div>
+        <h3>Conducta & Profesionalismo</h3>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Trato respetuoso y serio</span><span class="skill-row-pct">96%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="96"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Ambiente divertido y sano</span><span class="skill-row-pct">88%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="88"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-top"><span class="skill-row-label">Manejo del lenguaje del staff</span><span class="skill-row-pct">85%</span></div>
+        <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="85"></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- EXPERIENCIA -->
-<section id="experiencia" class="section fade-in">
-  <h2 class="glow section-title">🔥 Experiencia (11 servidores)</h2>
+<div id="page-experiencia" class="page">
+  <section class="section">
+    <h2 class="glow section-title">🔥 Experiencia (11 servidores)</h2>
+    <div class="grid">
 
-  <div class="grid">
+      <div class="card" onclick="openModal('MineRush Network')">
+        <img src="mine-rush.png" alt="Logo MineRush">
+        <div class="card-content">
+          <h3>MineRush Network</h3>
+          <div class="badge-wrapper"><span class="badge">Founder</span></div>
+        </div>
+      </div>
 
-    <div class="card" onclick="openModal('MineRush Network')">
-      <img src="mine-rush.png" alt="Logo MineRush">
-      <div class="card-content">
-        <h3>MineRush Network</h3>
-        <div class="badge-wrapper"><span class="badge">Founder</span></div>
+      <div class="card" onclick="openModal('MineChaos Network')">
+        <img src="mine-chaos.png" alt="Logo MineChaos">
+        <div class="card-content">
+          <h3>MineChaos Network</h3>
+          <div class="badge-wrapper"><span class="badge">Founder</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('MineGlow Network')">
+        <img src="mine-glow.png" alt="Logo MineGlow">
+        <div class="card-content">
+          <h3>MineGlow Network</h3>
+          <div class="badge-wrapper"><span class="badge">Manager</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('MineLow Network')">
+        <img src="mine-low.png" alt="Logo MineLow">
+        <div class="card-content">
+          <h3>MineLow Network</h3>
+          <div class="badge-wrapper"><span class="badge">Sr Mod</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('MineSkill Network')">
+        <img src="mine-skill.png" alt="Logo MineSkill">
+        <div class="card-content">
+          <h3>MineSkill Network</h3>
+          <div class="badge-wrapper"><span class="badge">Manager</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('MineDark Network')">
+        <img src="mine-dark.png" alt="Logo MineDark">
+        <div class="card-content">
+          <h3>MineDark Network</h3>
+          <div class="badge-wrapper"><span class="badge">Manager</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('MineDash Network')">
+        <img src="mine-dash.png" alt="Logo MineDash">
+        <div class="card-content">
+          <h3>MineDash Network</h3>
+          <div class="badge-wrapper"><span class="badge">Owner</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('EgoCraft Network')">
+        <img src="ego-craft.png" alt="Logo EgoCraft">
+        <div class="card-content">
+          <h3>EgoCraft Network</h3>
+          <div class="badge-wrapper"><span class="badge">Manager</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('EskMC Network')">
+        <img src="esk-mc.png" alt="Logo EskMC">
+        <div class="card-content">
+          <h3>EskMC Network</h3>
+          <div class="badge-wrapper"><span class="badge">Administrador</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('KeniBox Network')">
+        <img src="keni-box.png" alt="Logo KeniBox">
+        <div class="card-content">
+          <h3>KeniBox Network</h3>
+          <div class="badge-wrapper"><span class="badge">Owner</span></div>
+        </div>
+      </div>
+
+      <div class="card" onclick="openModal('MineIce Network')">
+        <img src="mine-ice.png" alt="Logo MineIce">
+        <div class="card-content">
+          <h3>MineIce Network</h3>
+          <div class="badge-wrapper"><span class="badge">Administrador</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- HABILIDADES -->
+<div id="page-habilidades" class="page">
+  <section class="section">
+    <h2 class="glow section-title">🛡️ Habilidades</h2>
+    <div class="skills-container">
+      <div class="skill-item">
+        <span class="skill-label">Control</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
+        <span class="skill-percent">92%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-label">Configuración</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+        <span class="skill-percent">85%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-label">Moderación</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div>
+        <span class="skill-percent">95%</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-label">Plugins</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="46"></div></div>
+        <span class="skill-percent">46%</span>
       </div>
     </div>
-
-    <div class="card" onclick="openModal('MineChaos Network')">
-      <img src="mine-chaos.png" alt="Logo MineChaos">
-      <div class="card-content">
-        <h3>MineChaos Network</h3>
-        <div class="badge-wrapper"><span class="badge">Founder</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineGlow Network')">
-      <img src="mine-glow.png" alt="Logo MineGlow">
-      <div class="card-content">
-        <h3>MineGlow Network</h3>
-        <div class="badge-wrapper"><span class="badge">Manager</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineLow Network')">
-      <img src="mine-low.png" alt="Logo MineLow">
-      <div class="card-content">
-        <h3>MineLow Network</h3>
-        <div class="badge-wrapper"><span class="badge">Sr Mod</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineSkill Network')">
-      <img src="mine-skill.png" alt="Logo MineSkill">
-      <div class="card-content">
-        <h3>MineSkill Network</h3>
-        <div class="badge-wrapper"><span class="badge">Manager</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineDark Network')">
-      <img src="mine-dark.png" alt="Logo MineDark">
-      <div class="card-content">
-        <h3>MineDark Network</h3>
-        <div class="badge-wrapper"><span class="badge">Manager</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineDash Network')">
-      <img src="mine-dash.png" alt="Logo MineDash">
-      <div class="card-content">
-        <h3>MineDash Network</h3>
-        <div class="badge-wrapper"><span class="badge">Owner</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('EgoCraft Network')">
-      <img src="ego-craft.png" alt="Logo EgoCraft">
-      <div class="card-content">
-        <h3>EgoCraft Network</h3>
-        <div class="badge-wrapper"><span class="badge">Manager</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('EskMC Network')">
-      <img src="esk-mc.png" alt="Logo EskMC">
-      <div class="card-content">
-        <h3>EskMC Network</h3>
-        <div class="badge-wrapper"><span class="badge">Administrador</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('KeniBox Network')">
-      <img src="keni-box.png" alt="Logo KeniBox">
-      <div class="card-content">
-        <h3>KeniBox Network</h3>
-        <div class="badge-wrapper"><span class="badge">Owner</span></div>
-      </div>
-    </div>
-
-    <div class="card" onclick="openModal('MineIce Network')">
-      <img src="mine-ice.png" alt="Logo MineIce">
-      <div class="card-content">
-        <h3>MineIce Network</h3>
-        <div class="badge-wrapper"><span class="badge">Administrador</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- CONTACTO -->
-<section id="contacto" class="section fade-in">
-  <h2 class="glow section-title">📩 Contacto</h2>
-  <div class="contact-box">
-    <p>Discord: <strong>andyaleyt</strong></p>
-    <p>Email: <a href="mailto:araujoluna2021@gmail.com">araujoluna2021@gmail.com</a></p>
-    <p>Disponible para gestión de servidores y eventos</p>
-  </div>
-</section>
+<div id="page-contacto" class="page">
+  <section class="section">
+    <h2 class="glow section-title">📩 Contacto</h2>
+    <div class="contact-box">
+      <p>Discord: <strong>andyaleyt</strong></p>
+      <p>Email: <a href="mailto:araujoluna2021@gmail.com">araujoluna2021@gmail.com</a></p>
+      <p>Disponible para gestión de servidores y eventos</p>
+    </div>
+  </section>
+</div>
 
 <!-- MODAL -->
 <div id="modal" class="modal" onclick="closeModalOutside(event)">
@@ -551,12 +843,53 @@ footer {
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer class="fade-in">
-  © 2026 paraujoIab — Todos los derechos reservados
-</footer>
+<footer>© 2026 paraujoIab — Todos los derechos reservados</footer>
 
 <script>
+  /* NAVEGACIÓN POR PESTAÑAS */
+  var skillCardPages = ['conocimientos', 'caracteristicas', 'opiniones'];
+
+  function animateSkillCards(pageId) {
+    var container = document.getElementById(pageId + '-cards');
+    if (!container) return;
+    setTimeout(function() {
+      container.querySelectorAll('.skill-row-fill').forEach(function(bar) {
+        bar.style.width = bar.getAttribute('data-width') + '%';
+      });
+    }, 100);
+  }
+
+  function resetSkillCards(pageId) {
+    var container = document.getElementById(pageId + '-cards');
+    if (!container) return;
+    container.querySelectorAll('.skill-row-fill').forEach(function(bar) {
+      bar.style.width = '0%';
+    });
+  }
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('nav a').forEach(function(a) { a.classList.remove('active'); });
+    /* Resetear todas las barras antes de cambiar */
+    skillCardPages.forEach(function(pid) { resetSkillCards(pid); });
+    document.querySelectorAll('.skill-bar-fill').forEach(function(bar) { bar.style.width = '0%'; });
+    document.getElementById('page-' + id).classList.add('active');
+    var link = document.getElementById('nav-' + id);
+    if (link) link.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    /* Animar según la página */
+    if (id === 'habilidades') {
+      setTimeout(function() {
+        document.querySelectorAll('.skill-bar-fill').forEach(function(bar) {
+          bar.style.width = bar.getAttribute('data-width') + '%';
+        });
+      }, 100);
+    } else if (skillCardPages.indexOf(id) !== -1) {
+      animateSkillCards(id);
+    }
+  }
+
+  /* MODAL */
   var data = {
     "MineRush Network": "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
     "MineChaos Network": "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
@@ -576,30 +909,78 @@ footer {
     document.getElementById('modal-text').textContent = data[name];
     document.getElementById('modal').classList.add('active');
   }
+  function closeModal() { document.getElementById('modal').classList.remove('active'); }
+  function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-  function closeModal() {
-    document.getElementById('modal').classList.remove('active');
-  }
+  /* PARTÍCULAS */
+  (function () {
+    var canvas = document.getElementById('particles-canvas');
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var mouse = { x: null, y: null, radius: 120 };
 
-  function closeModalOutside(e) {
-    if (e.target === document.getElementById('modal')) closeModal();
-  }
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', function() { mouse.x = null; mouse.y = null; });
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
+    function Particle() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 0.5;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.alpha = Math.random() * 0.5 + 0.2;
+    }
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+    Particle.prototype.update = function() {
+      if (mouse.x !== null) {
+        var dx = this.x - mouse.x, dy = this.y - mouse.y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < mouse.radius) {
+          var force = (mouse.radius - dist) / mouse.radius;
+          this.x += dx / dist * force * 2;
+          this.y += dy / dist * force * 2;
+        }
       }
-    });
-  }, { threshold: 0.15 });
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > canvas.width)  this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height)  this.vy *= -1;
+    };
 
-  document.querySelectorAll('.fade-in').forEach(function(el) {
-    observer.observe(el);
-  });
+    Particle.prototype.draw = function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(56,189,248,' + this.alpha + ')';
+      ctx.fill();
+    };
+
+    for (var i = 0; i < 90; i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var a = 0; a < particles.length; a++) {
+        for (var b = a + 1; b < particles.length; b++) {
+          var dx = particles[a].x - particles[b].x;
+          var dy = particles[a].y - particles[b].y;
+          var dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.strokeStyle = 'rgba(56,189,248,' + ((1 - dist/130) * 0.18) + ')';
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      for (var i = 0; i < particles.length; i++) { particles[i].update(); particles[i].draw(); }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
 </script>
 
 </body>
