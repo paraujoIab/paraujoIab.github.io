@@ -169,8 +169,6 @@ nav a.active {
   background: rgba(56, 189, 248, 0.07);
 }
 
-.hero-tag-icon { font-size: 1rem; }
-
 .btn {
   padding: 12px 28px;
   border-radius: 12px;
@@ -332,6 +330,26 @@ nav a.active {
 .contact-box a { color: #38bdf8; text-decoration: none; }
 .contact-box a:hover { text-decoration: underline; }
 
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 14px;
+  border: 1px solid;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: transform 0.25s, box-shadow 0.25s, filter 0.25s;
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  filter: brightness(1.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  text-decoration: none !important;
+}
+
 footer {
   text-align: center;
   padding: 30px 20px;
@@ -376,6 +394,43 @@ footer {
 .modal-body h2 { margin-bottom: 16px; }
 .modal-body p { line-height: 1.7; opacity: 0.85; font-size: 0.95rem; }
 
+.modal-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 18px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-status-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.modal-status.online .modal-status-dot {
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+.modal-status.online { color: #4ade80; }
+
+.modal-status.offline .modal-status-dot {
+  background: #f87171;
+  box-shadow: 0 0 6px #f87171;
+}
+
+.modal-status.offline { color: #f87171; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
 .close-btn {
   margin-top: 28px;
   padding: 12px 30px;
@@ -391,7 +446,6 @@ footer {
 
 .close-btn:hover { transform: scale(1.05); }
 
-/* --- SKILL CARDS --- */
 .skill-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -500,7 +554,6 @@ footer {
     </div>
     <h1>Soy <span class="glow">paraujoIab</span></h1>
     <p>Manager, organizador de eventos y organizador de staff en servidores de Minecraft.</p>
-
     <div class="hero-tags">
       <span class="hero-tag">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -515,7 +568,6 @@ footer {
         Rendimiento del Staff
       </span>
     </div>
-
     <button class="btn" onclick="showPage('experiencia')">Ver experiencia</button>
   </section>
 </div>
@@ -531,9 +583,7 @@ footer {
       administración general de servidores de Minecraft.
     </p>
   </section>
-
   <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="conocimientos-cards">
-
     <div class="skill-card">
       <div class="skill-card-header">
         <div class="skill-card-icon">⚙️</div>
@@ -556,7 +606,6 @@ footer {
         <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="80"></div></div>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-card-header">
         <div class="skill-card-icon">🗄️</div>
@@ -579,7 +628,6 @@ footer {
         <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="95"></div></div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -595,9 +643,7 @@ footer {
       • Ambiente profesional
     </p>
   </section>
-
   <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="caracteristicas-cards">
-
     <div class="skill-card">
       <div class="skill-card-header">
         <div class="skill-card-icon">📋</div>
@@ -616,7 +662,6 @@ footer {
         <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="97"></div></div>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-card-header">
         <div class="skill-card-icon">🤝</div>
@@ -635,7 +680,6 @@ footer {
         <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="92"></div></div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -651,9 +695,7 @@ footer {
         como: "XD", ":v", etc.
     </p>
   </section>
-
   <div class="skill-cards-grid" style="padding: 0 20px 80px;" id="opiniones-cards">
-
     <div class="skill-card">
       <div class="skill-card-header">
         <div class="skill-card-icon">💬</div>
@@ -672,7 +714,6 @@ footer {
         <div class="skill-row-bar"><div class="skill-row-fill fill-blue" data-width="90"></div></div>
       </div>
     </div>
-
     <div class="skill-card">
       <div class="skill-card-header">
         <div class="skill-card-icon">⚖️</div>
@@ -691,7 +732,6 @@ footer {
         <div class="skill-row-bar"><div class="skill-row-fill fill-green" data-width="85"></div></div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -700,7 +740,6 @@ footer {
   <section class="section">
     <h2 class="glow section-title">🔥 Experiencia (11 servidores)</h2>
     <div class="grid">
-
       <div class="card" onclick="openModal('MineRush Network')">
         <img src="mine-rush.png" alt="Logo MineRush">
         <div class="card-content">
@@ -708,7 +747,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Founder</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('MineChaos Network')">
         <img src="mine-chaos.png" alt="Logo MineChaos">
         <div class="card-content">
@@ -716,7 +754,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Founder</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('MineGlow Network')">
         <img src="mine-glow.png" alt="Logo MineGlow">
         <div class="card-content">
@@ -724,7 +761,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Manager</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('MineLow Network')">
         <img src="mine-low.png" alt="Logo MineLow">
         <div class="card-content">
@@ -732,7 +768,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Sr Mod</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('MineSkill Network')">
         <img src="mine-skill.png" alt="Logo MineSkill">
         <div class="card-content">
@@ -740,7 +775,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Manager</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('MineDark Network')">
         <img src="mine-dark.png" alt="Logo MineDark">
         <div class="card-content">
@@ -748,7 +782,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Manager</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('MineDash Network')">
         <img src="mine-dash.png" alt="Logo MineDash">
         <div class="card-content">
@@ -756,7 +789,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Owner</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('EgoCraft Network')">
         <img src="ego-craft.png" alt="Logo EgoCraft">
         <div class="card-content">
@@ -764,7 +796,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Manager</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('EskMC Network')">
         <img src="esk-mc.png" alt="Logo EskMC">
         <div class="card-content">
@@ -772,7 +803,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Administrador</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('KeniBox Network')">
         <img src="keni-box.png" alt="Logo KeniBox">
         <div class="card-content">
@@ -780,7 +810,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Owner</span></div>
         </div>
       </div>
-
       <div class="card" onclick="openModal('MineIce Network')">
         <img src="mine-ice.png" alt="Logo MineIce">
         <div class="card-content">
@@ -788,7 +817,6 @@ footer {
           <div class="badge-wrapper"><span class="badge">Administrador</span></div>
         </div>
       </div>
-
     </div>
   </section>
 </div>
@@ -827,9 +855,25 @@ footer {
   <section class="section">
     <h2 class="glow section-title">📩 Contacto</h2>
     <div class="contact-box">
-      <p>Discord: <strong>andyaleyt</strong></p>
-      <p>Email: <a href="mailto:araujoluna2021@gmail.com">araujoluna2021@gmail.com</a></p>
-      <p>Disponible para gestión de servidores y eventos</p>
+      <p>Disponible para gestión de servidores y eventos.<br>¡Contáctame por cualquiera de estas plataformas!</p>
+      <div style="display:flex; flex-direction:column; gap:14px; margin-top:28px;">
+
+        <a href="https://discord.com/users/962462312160182342" target="_blank" class="contact-btn" style="background:rgba(88,101,242,0.12); border-color:rgba(88,101,242,0.45); color:#8b9dff;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Discord — andyaleyt
+        </a>
+
+        <a href="mailto:araujoluna2021@gmail.com" class="contact-btn" style="background:rgba(234,67,53,0.1); border-color:rgba(234,67,53,0.4); color:#f28b82;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Gmail — araujoluna2021@gmail.com
+        </a>
+
+        <a href="https://guns.lol/paraujolab" target="_blank" class="contact-btn" style="background:rgba(56,189,248,0.08); border-color:rgba(56,189,248,0.4); color:#38bdf8;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"/><path d="M2 12h20"/></svg>
+          guns.lol — paraujolab
+        </a>
+
+      </div>
     </div>
   </section>
 </div>
@@ -837,6 +881,10 @@ footer {
 <!-- MODAL -->
 <div id="modal" class="modal" onclick="closeModalOutside(event)">
   <div class="modal-body">
+    <div id="modal-status" class="modal-status">
+      <div class="modal-status-dot"></div>
+      <span id="modal-status-text"></span>
+    </div>
     <h2 id="modal-title" class="glow"></h2>
     <p id="modal-text"></p>
     <button class="close-btn" onclick="closeModal()">Cerrar</button>
@@ -846,7 +894,6 @@ footer {
 <footer>© 2026 paraujoIab — Todos los derechos reservados</footer>
 
 <script>
-  /* NAVEGACIÓN POR PESTAÑAS */
   var skillCardPages = ['conocimientos', 'caracteristicas', 'opiniones'];
 
   function animateSkillCards(pageId) {
@@ -870,14 +917,12 @@ footer {
   function showPage(id) {
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
     document.querySelectorAll('nav a').forEach(function(a) { a.classList.remove('active'); });
-    /* Resetear todas las barras antes de cambiar */
     skillCardPages.forEach(function(pid) { resetSkillCards(pid); });
     document.querySelectorAll('.skill-bar-fill').forEach(function(bar) { bar.style.width = '0%'; });
     document.getElementById('page-' + id).classList.add('active');
     var link = document.getElementById('nav-' + id);
     if (link) link.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    /* Animar según la página */
     if (id === 'habilidades') {
       setTimeout(function() {
         document.querySelectorAll('.skill-bar-fill').forEach(function(bar) {
@@ -889,7 +934,6 @@ footer {
     }
   }
 
-  /* MODAL */
   var data = {
     "MineRush Network": "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
     "MineChaos Network": "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
@@ -904,16 +948,35 @@ footer {
     "MineIce Network": "Ingresé a MineIce Network como Administrador por mi experiencia y mis conocimientos, además de que uno de los dueños ya había trabajado conmigo anteriormente. Actualmente no estoy muy online porque el servidor no tiene gente."
   };
 
+  var statusMap = {
+    "MineRush Network":  "offline",
+    "MineChaos Network": "offline",
+    "MineGlow Network":  "offline",
+    "MineLow Network":   "online",
+    "MineSkill Network": "offline",
+    "MineDark Network":  "online",
+    "MineDash Network":  "online",
+    "EgoCraft Network":  "online",
+    "EskMC Network":     "online",
+    "KeniBox Network":   "online",
+    "MineIce Network":   "offline"
+  };
+
   function openModal(name) {
+    var status = statusMap[name] || 'offline';
+    var statusEl = document.getElementById('modal-status');
+    var statusText = document.getElementById('modal-status-text');
+    statusEl.className = 'modal-status ' + status;
+    statusText.textContent = status === 'online' ? 'Online' : 'Offline';
     document.getElementById('modal-title').textContent = name;
     document.getElementById('modal-text').textContent = data[name];
     document.getElementById('modal').classList.add('active');
   }
+
   function closeModal() { document.getElementById('modal').classList.remove('active'); }
   function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-  /* PARTÍCULAS */
   (function () {
     var canvas = document.getElementById('particles-canvas');
     var ctx = canvas.getContext('2d');
@@ -938,14 +1001,15 @@ footer {
     Particle.prototype.update = function() {
       if (mouse.x !== null) {
         var dx = this.x - mouse.x, dy = this.y - mouse.y;
-        var dist = Math.sqrt(dx*dx + dy*dy);
+        var dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < mouse.radius) {
           var force = (mouse.radius - dist) / mouse.radius;
           this.x += dx / dist * force * 2;
           this.y += dy / dist * force * 2;
         }
       }
-      this.x += this.vx; this.y += this.vy;
+      this.x += this.vx;
+      this.y += this.vy;
       if (this.x < 0 || this.x > canvas.width)  this.vx *= -1;
       if (this.y < 0 || this.y > canvas.height)  this.vy *= -1;
     };
@@ -965,23 +1029,24 @@ footer {
         for (var b = a + 1; b < particles.length; b++) {
           var dx = particles[a].x - particles[b].x;
           var dy = particles[a].y - particles[b].y;
-          var dist = Math.sqrt(dx*dx + dy*dy);
+          var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 130) {
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
             ctx.lineTo(particles[b].x, particles[b].y);
-            ctx.strokeStyle = 'rgba(56,189,248,' + ((1 - dist/130) * 0.18) + ')';
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = 'rgba(56,189,248,' + ((1 - dist / 130) * 0.18) + ')';
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }
+        particles[a].update();
+        particles[a].draw();
       }
-      for (var i = 0; i < particles.length; i++) { particles[i].update(); particles[i].draw(); }
       requestAnimationFrame(animate);
     }
+
     animate();
   })();
 </script>
-
 </body>
 </html>
