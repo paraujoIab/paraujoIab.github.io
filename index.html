@@ -29,10 +29,7 @@ body {
   pointer-events: none;
 }
 
-header, .page, footer, .modal {
-  position: relative;
-  z-index: 1;
-}
+header, .page, footer, .modal { position: relative; z-index: 1; }
 
 header {
   position: fixed;
@@ -93,10 +90,7 @@ nav a.active {
   padding: 20px;
 }
 
-.avatar-wrapper {
-  position: relative;
-  margin-bottom: 24px;
-}
+.avatar-wrapper { position: relative; margin-bottom: 24px; }
 
 .avatar {
   width: 120px; height: 120px;
@@ -128,7 +122,6 @@ nav a.active {
 }
 
 .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 16px; }
-
 .glow { color: #38bdf8; text-shadow: 0 0 25px rgba(56,189,248,0.6); }
 
 .hero p {
@@ -215,8 +208,7 @@ nav a.active {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275),
-              border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275), border-color 0.3s, box-shadow 0.3s, background 0.3s;
   cursor: pointer;
   height: 100%;
 }
@@ -237,10 +229,7 @@ nav a.active {
   display: block;
 }
 
-.card:hover img {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 8px #38bdf8);
-}
+.card:hover img { transform: scale(1.05); filter: drop-shadow(0 0 8px #38bdf8); }
 
 .card-content {
   padding: 20px;
@@ -251,7 +240,6 @@ nav a.active {
 }
 
 .card-content h3 { margin-bottom: 20px; font-size: 1.15rem; color: #f1f5f9; }
-
 .badge-wrapper { margin-top: auto; padding-bottom: 10px; }
 
 .badge {
@@ -358,6 +346,7 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
+/* SERVER MODAL */
 .modal {
   position: fixed;
   top: 0; left: 0;
@@ -418,12 +407,7 @@ footer {
 }
 
 .modal-status.online { color: #4ade80; }
-
-.modal-status.offline .modal-status-dot {
-  background: #f87171;
-  box-shadow: 0 0 6px #f87171;
-}
-
+.modal-status.offline .modal-status-dot { background: #f87171; box-shadow: 0 0 6px #f87171; }
 .modal-status.offline { color: #f87171; }
 
 @keyframes blink {
@@ -446,6 +430,63 @@ footer {
 
 .close-btn:hover { transform: scale(1.05); }
 
+/* LIGHTBOX */
+#lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.94);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 3000;
+  padding: 20px;
+  cursor: zoom-out;
+}
+
+#lightbox.active { visibility: visible; opacity: 1; }
+
+#lightbox img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 0 60px rgba(56,189,248,0.2), 0 30px 80px rgba(0,0,0,0.6);
+  animation: lbPop 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
+  cursor: default;
+}
+
+@keyframes lbPop {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(56,189,248,0.4);
+  color: #38bdf8;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 1;
+}
+
+#lightbox-close:hover {
+  background: rgba(56,189,248,0.15);
+  transform: scale(1.1);
+}
+
+/* SKILL CARDS */
 .skill-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -482,12 +523,7 @@ footer {
   flex-shrink: 0;
 }
 
-.skill-card-header h3 {
-  font-size: 1.1rem;
-  color: #f1f5f9;
-  font-weight: 700;
-}
-
+.skill-card-header h3 { font-size: 1.1rem; color: #f1f5f9; font-weight: 700; }
 .skill-row { margin-bottom: 18px; }
 .skill-row:last-child { margin-bottom: 0; }
 
@@ -508,7 +544,6 @@ footer {
 }
 
 .skill-row-label::before { content: '★'; color: #38bdf8; font-size: 0.8rem; }
-
 .skill-row-pct { font-size: 0.88rem; font-weight: 700; color: #38bdf8; }
 
 .skill-row-bar {
@@ -549,7 +584,6 @@ footer {
   aspect-ratio: 16/10;
   background: rgba(0,0,0,0.3);
   overflow: hidden;
-  position: relative;
 }
 
 .proof-img-wrap img {
@@ -560,25 +594,7 @@ footer {
   transition: transform 0.4s;
 }
 
-.proof-card:hover .proof-img-wrap img {
-  transform: scale(1.04);
-}
-
-.proof-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0; left: 0;
-  color: rgba(148,163,184,0.6);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
+.proof-card:hover .proof-img-wrap img { transform: scale(1.04); }
 
 .proof-label {
   display: flex;
@@ -821,83 +837,17 @@ footer {
       Experiencia (11 servidores)
     </h2>
     <div class="grid">
-      <div class="card" onclick="openModal('MineRush Network')">
-        <img src="mine-rush.png" alt="Logo MineRush">
-        <div class="card-content">
-          <h3>MineRush Network</h3>
-          <div class="badge-wrapper"><span class="badge">Founder</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('MineChaos Network')">
-        <img src="mine-chaos.png" alt="Logo MineChaos">
-        <div class="card-content">
-          <h3>MineChaos Network</h3>
-          <div class="badge-wrapper"><span class="badge">Founder</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('MineGlow Network')">
-        <img src="mine-glow.png" alt="Logo MineGlow">
-        <div class="card-content">
-          <h3>MineGlow Network</h3>
-          <div class="badge-wrapper"><span class="badge">Manager</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('MineLow Network')">
-        <img src="mine-low.png" alt="Logo MineLow">
-        <div class="card-content">
-          <h3>MineLow Network</h3>
-          <div class="badge-wrapper"><span class="badge">Sr Mod</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('MineSkill Network')">
-        <img src="mine-skill.png" alt="Logo MineSkill">
-        <div class="card-content">
-          <h3>MineSkill Network</h3>
-          <div class="badge-wrapper"><span class="badge">Manager</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('MineDark Network')">
-        <img src="mine-dark.png" alt="Logo MineDark">
-        <div class="card-content">
-          <h3>MineDark Network</h3>
-          <div class="badge-wrapper"><span class="badge">Manager</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('MineDash Network')">
-        <img src="mine-dash.png" alt="Logo MineDash">
-        <div class="card-content">
-          <h3>MineDash Network</h3>
-          <div class="badge-wrapper"><span class="badge">Owner</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('EgoCraft Network')">
-        <img src="ego-craft.png" alt="Logo EgoCraft">
-        <div class="card-content">
-          <h3>EgoCraft Network</h3>
-          <div class="badge-wrapper"><span class="badge">Manager</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('EskMC Network')">
-        <img src="esk-mc.png" alt="Logo EskMC">
-        <div class="card-content">
-          <h3>EskMC Network</h3>
-          <div class="badge-wrapper"><span class="badge">Administrador</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('KeniBox Network')">
-        <img src="keni-box.png" alt="Logo KeniBox">
-        <div class="card-content">
-          <h3>KeniBox Network</h3>
-          <div class="badge-wrapper"><span class="badge">Owner</span></div>
-        </div>
-      </div>
-      <div class="card" onclick="openModal('MineIce Network')">
-        <img src="mine-ice.png" alt="Logo MineIce">
-        <div class="card-content">
-          <h3>MineIce Network</h3>
-          <div class="badge-wrapper"><span class="badge">Administrador</span></div>
-        </div>
-      </div>
+      <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png" alt="Logo MineRush"><div class="card-content"><h3>MineRush Network</h3><div class="badge-wrapper"><span class="badge">Founder</span></div></div></div>
+      <div class="card" onclick="openModal('MineChaos Network')"><img src="mine-chaos.png" alt="Logo MineChaos"><div class="card-content"><h3>MineChaos Network</h3><div class="badge-wrapper"><span class="badge">Founder</span></div></div></div>
+      <div class="card" onclick="openModal('MineGlow Network')"><img src="mine-glow.png" alt="Logo MineGlow"><div class="card-content"><h3>MineGlow Network</h3><div class="badge-wrapper"><span class="badge">Manager</span></div></div></div>
+      <div class="card" onclick="openModal('MineLow Network')"><img src="mine-low.png" alt="Logo MineLow"><div class="card-content"><h3>MineLow Network</h3><div class="badge-wrapper"><span class="badge">Sr Mod</span></div></div></div>
+      <div class="card" onclick="openModal('MineSkill Network')"><img src="mine-skill.png" alt="Logo MineSkill"><div class="card-content"><h3>MineSkill Network</h3><div class="badge-wrapper"><span class="badge">Manager</span></div></div></div>
+      <div class="card" onclick="openModal('MineDark Network')"><img src="mine-dark.png" alt="Logo MineDark"><div class="card-content"><h3>MineDark Network</h3><div class="badge-wrapper"><span class="badge">Manager</span></div></div></div>
+      <div class="card" onclick="openModal('MineDash Network')"><img src="mine-dash.png" alt="Logo MineDash"><div class="card-content"><h3>MineDash Network</h3><div class="badge-wrapper"><span class="badge">Owner</span></div></div></div>
+      <div class="card" onclick="openModal('EgoCraft Network')"><img src="ego-craft.png" alt="Logo EgoCraft"><div class="card-content"><h3>EgoCraft Network</h3><div class="badge-wrapper"><span class="badge">Manager</span></div></div></div>
+      <div class="card" onclick="openModal('EskMC Network')"><img src="esk-mc.png" alt="Logo EskMC"><div class="card-content"><h3>EskMC Network</h3><div class="badge-wrapper"><span class="badge">Administrador</span></div></div></div>
+      <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png" alt="Logo KeniBox"><div class="card-content"><h3>KeniBox Network</h3><div class="badge-wrapper"><span class="badge">Owner</span></div></div></div>
+      <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png" alt="Logo MineIce"><div class="card-content"><h3>MineIce Network</h3><div class="badge-wrapper"><span class="badge">Administrador</span></div></div></div>
     </div>
   </section>
 </div>
@@ -910,26 +860,10 @@ footer {
       Habilidades
     </h2>
     <div class="skills-container">
-      <div class="skill-item">
-        <span class="skill-label">Control</span>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
-        <span class="skill-percent">92%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-label">Configuración</span>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
-        <span class="skill-percent">85%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-label">Moderación</span>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div>
-        <span class="skill-percent">95%</span>
-      </div>
-      <div class="skill-item">
-        <span class="skill-label">Plugins</span>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="46"></div></div>
-        <span class="skill-percent">46%</span>
-      </div>
+      <div class="skill-item"><span class="skill-label">Control</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div><span class="skill-percent">92%</span></div>
+      <div class="skill-item"><span class="skill-label">Configuración</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div><span class="skill-percent">85%</span></div>
+      <div class="skill-item"><span class="skill-label">Moderación</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div><span class="skill-percent">95%</span></div>
+      <div class="skill-item"><span class="skill-label">Plugins</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="46"></div></div><span class="skill-percent">46%</span></div>
     </div>
   </section>
 </div>
@@ -949,77 +883,26 @@ footer {
         <h3 style="font-size:1.15rem;color:#f1f5f9;font-weight:700;">Pruebas de Rangos <span style="color:#38bdf8;">(5)</span></h3>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="prueba-rango-1.png" alt="Prueba rango 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>prueba-rango-1.png</span>
-            </div>
-          </div>
-          <div class="proof-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Prueba de Rango #1
-          </div>
+        <div class="proof-card" onclick="openLightbox('prueba-rango-1.png')">
+          <div class="proof-img-wrap"><img src="prueba-rango-1.png" alt="Prueba rango 1"></div>
+          <div class="proof-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prueba de Rango #1</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="prueba-rango-2.png" alt="Prueba rango 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>prueba-rango-2.png</span>
-            </div>
-          </div>
-          <div class="proof-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Prueba de Rango #2
-          </div>
+        <div class="proof-card" onclick="openLightbox('prueba-rango-2.png')">
+          <div class="proof-img-wrap"><img src="prueba-rango-2.png" alt="Prueba rango 2"></div>
+          <div class="proof-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prueba de Rango #2</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="prueba-rango-3.png" alt="Prueba rango 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>prueba-rango-3.png</span>
-            </div>
-          </div>
-          <div class="proof-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Prueba de Rango #3
-          </div>
+        <div class="proof-card" onclick="openLightbox('prueba-rango-3.png')">
+          <div class="proof-img-wrap"><img src="prueba-rango-3.png" alt="Prueba rango 3"></div>
+          <div class="proof-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prueba de Rango #3</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="prueba-rango-4.png" alt="Prueba rango 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>prueba-rango-4.png</span>
-            </div>
-          </div>
-          <div class="proof-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Prueba de Rango #4
-          </div>
+        <div class="proof-card" onclick="openLightbox('prueba-rango-4.png')">
+          <div class="proof-img-wrap"><img src="prueba-rango-4.png" alt="Prueba rango 4"></div>
+          <div class="proof-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prueba de Rango #4</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="prueba-rango-5.png" alt="Prueba rango 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>prueba-rango-5.png</span>
-            </div>
-          </div>
-          <div class="proof-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Prueba de Rango #5
-          </div>
+        <div class="proof-card" onclick="openLightbox('prueba-rango-5.png')">
+          <div class="proof-img-wrap"><img src="prueba-rango-5.png" alt="Prueba rango 5"></div>
+          <div class="proof-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prueba de Rango #5</div>
         </div>
-
       </div>
     </div>
 
@@ -1030,98 +913,34 @@ footer {
         <h3 style="font-size:1.15rem;color:#f1f5f9;font-weight:700;">Trabajos Realizados <span style="color:#4ade80;">(7)</span></h3>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="trabajo-1.png" alt="Trabajo 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </div>
-          </div>
-          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Trabajo #1
-          </div>
+        <div class="proof-card" onclick="openLightbox('trabajo-1.png')">
+          <div class="proof-img-wrap"><img src="trabajo-1.png" alt="Trabajo 1"></div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Trabajo #1</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="trabajo-2.png" alt="Trabajo 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </div>
-          </div>
-          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Trabajo #2
-          </div>
+        <div class="proof-card" onclick="openLightbox('trabajo-2.png')">
+          <div class="proof-img-wrap"><img src="trabajo-2.png" alt="Trabajo 2"></div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Trabajo #2</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="trabajo-3.png" alt="Trabajo 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </div>
-          </div>
-          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Trabajo #3
-          </div>
+        <div class="proof-card" onclick="openLightbox('trabajo-3.png')">
+          <div class="proof-img-wrap"><img src="trabajo-3.png" alt="Trabajo 3"></div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Trabajo #3</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="trabajo-4.png" alt="Trabajo 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </div>
-          </div>
-          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Trabajo #4
-          </div>
+        <div class="proof-card" onclick="openLightbox('trabajo-4.png')">
+          <div class="proof-img-wrap"><img src="trabajo-4.png" alt="Trabajo 4"></div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Trabajo #4</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="trabajo-5.png" alt="Trabajo 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </div>
-          </div>
-          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Trabajo #5
-          </div>
+        <div class="proof-card" onclick="openLightbox('trabajo-5.png')">
+          <div class="proof-img-wrap"><img src="trabajo-5.png" alt="Trabajo 5"></div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Trabajo #5</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="trabajo-6.png" alt="Trabajo 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </div>
-          </div>
-          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Trabajo #6
-          </div>
+        <div class="proof-card" onclick="openLightbox('trabajo-6.png')">
+          <div class="proof-img-wrap"><img src="trabajo-6.png" alt="Trabajo 6"></div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Trabajo #6</div>
         </div>
-
-        <div class="proof-card">
-          <div class="proof-img-wrap">
-            <img src="trabajo-7.png" alt="Trabajo 7" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="proof-placeholder">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            </div>
-          </div>
-          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Trabajo #7
-          </div>
+        <div class="proof-card" onclick="openLightbox('trabajo-7.png')">
+          <div class="proof-img-wrap"><img src="trabajo-7.png" alt="Trabajo 7"></div>
+          <div class="proof-label" style="border-color:rgba(74,222,128,0.25);color:#4ade80;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Trabajo #7</div>
         </div>
-
       </div>
     </div>
   </section>
@@ -1135,7 +954,6 @@ footer {
       Presentación
     </h2>
     <div style="max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
-
       <div style="background: rgba(15,23,42,0.85); border: 1px solid rgba(56,189,248,0.2); border-radius: 20px; padding: 36px 40px; display: flex; gap: 20px; align-items: flex-start;">
         <div style="font-size: 2rem; flex-shrink: 0; margin-top: 2px;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
@@ -1144,7 +962,6 @@ footer {
           Me presento, me llamo <strong style="color:#38bdf8;">Pablo</strong>, más conocido como <strong style="color:#38bdf8;">paraujoIab</strong>, y soy nuevo en el mundo del management. Trabajo como <strong style="color:#f1f5f9;">staff</strong>, <strong style="color:#f1f5f9;">manager</strong> y <strong style="color:#f1f5f9;">organizador de eventos</strong> de servidores.
         </p>
       </div>
-
       <div style="background: rgba(15,23,42,0.85); border: 1px solid rgba(56,189,248,0.2); border-radius: 20px; padding: 36px 40px; display: flex; gap: 20px; align-items: flex-start;">
         <div style="font-size: 2rem; flex-shrink: 0; margin-top: 2px;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/></svg>
@@ -1153,7 +970,6 @@ footer {
           He trabajado en la mayoría de rangos, desde el más alto <strong style="color:#f97316;">Founder</strong> al más bajo <strong style="color:#f97316;">Soporte</strong>, por lo tanto tengo conocimiento de las <strong style="color:#f1f5f9;">limitaciones y permisos</strong> que debe tener cada rango.
         </p>
       </div>
-
     </div>
   </section>
 </div>
@@ -1168,28 +984,24 @@ footer {
     <div class="contact-box">
       <p>Disponible para gestión de servidores y eventos.<br>¡Contáctame por cualquiera de estas plataformas!</p>
       <div style="display:flex; flex-direction:column; gap:14px; margin-top:28px;">
-
         <a href="https://discord.com/users/962462312160182342" target="_blank" class="contact-btn" style="background:rgba(88,101,242,0.12); border-color:rgba(88,101,242,0.45); color:#8b9dff;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
           Discord — andyaleyt
         </a>
-
         <a href="mailto:araujoluna2021@gmail.com" class="contact-btn" style="background:rgba(234,67,53,0.1); border-color:rgba(234,67,53,0.4); color:#f28b82;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           Gmail — araujoluna2021@gmail.com
         </a>
-
         <a href="https://guns.lol/paraujolab" target="_blank" class="contact-btn" style="background:rgba(56,189,248,0.08); border-color:rgba(56,189,248,0.4); color:#38bdf8;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"/><path d="M2 12h20"/></svg>
           guns.lol — paraujolab
         </a>
-
       </div>
     </div>
   </section>
 </div>
 
-<!-- MODAL -->
+<!-- SERVER MODAL -->
 <div id="modal" class="modal" onclick="closeModalOutside(event)">
   <div class="modal-body">
     <div id="modal-status" class="modal-status">
@@ -1200,6 +1012,12 @@ footer {
     <p id="modal-text"></p>
     <button class="close-btn" onclick="closeModal()">Cerrar</button>
   </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightboxClick(event)">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Imagen ampliada">
 </div>
 
 <footer>© 2026 paraujoIab — Todos los derechos reservados</footer>
@@ -1220,9 +1038,7 @@ footer {
   function resetSkillCards(pageId) {
     var container = document.getElementById(pageId + '-cards');
     if (!container) return;
-    container.querySelectorAll('.skill-row-fill').forEach(function(bar) {
-      bar.style.width = '0%';
-    });
+    container.querySelectorAll('.skill-row-fill').forEach(function(bar) { bar.style.width = '0%'; });
   }
 
   function showPage(id) {
@@ -1245,6 +1061,23 @@ footer {
     }
   }
 
+  /* LIGHTBOX */
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function closeLightboxClick(e) {
+    if (e.target !== document.getElementById('lightbox-img')) closeLightbox();
+  }
+
+  /* SERVER MODAL */
   var data = {
     "MineRush Network": "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
     "MineChaos Network": "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
@@ -1260,25 +1093,17 @@ footer {
   };
 
   var statusMap = {
-    "MineRush Network":  "offline",
-    "MineChaos Network": "offline",
-    "MineGlow Network":  "offline",
-    "MineLow Network":   "online",
-    "MineSkill Network": "offline",
-    "MineDark Network":  "online",
-    "MineDash Network":  "online",
-    "EgoCraft Network":  "online",
-    "EskMC Network":     "online",
-    "KeniBox Network":   "online",
-    "MineIce Network":   "offline"
+    "MineRush Network": "offline", "MineChaos Network": "offline", "MineGlow Network": "offline",
+    "MineLow Network": "online", "MineSkill Network": "offline", "MineDark Network": "online",
+    "MineDash Network": "online", "EgoCraft Network": "online", "EskMC Network": "online",
+    "KeniBox Network": "online", "MineIce Network": "offline"
   };
 
   function openModal(name) {
     var status = statusMap[name] || 'offline';
     var statusEl = document.getElementById('modal-status');
-    var statusText = document.getElementById('modal-status-text');
     statusEl.className = 'modal-status ' + status;
-    statusText.textContent = status === 'online' ? 'Online' : 'Offline';
+    document.getElementById('modal-status-text').textContent = status === 'online' ? 'Online' : 'Offline';
     document.getElementById('modal-title').textContent = name;
     document.getElementById('modal-text').textContent = data[name];
     document.getElementById('modal').classList.add('active');
@@ -1286,8 +1111,12 @@ footer {
 
   function closeModal() { document.getElementById('modal').classList.remove('active'); }
   function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeModal(); closeLightbox(); }
+  });
+
+  /* PARTICLES */
   (function () {
     var canvas = document.getElementById('particles-canvas');
     var ctx = canvas.getContext('2d');
@@ -1319,8 +1148,7 @@ footer {
           this.y += dy / dist * force * 2;
         }
       }
-      this.x += this.vx;
-      this.y += this.vy;
+      this.x += this.vx; this.y += this.vy;
       if (this.x < 0 || this.x > canvas.width)  this.vx *= -1;
       if (this.y < 0 || this.y > canvas.height)  this.vy *= -1;
     };
@@ -1355,7 +1183,6 @@ footer {
       }
       requestAnimationFrame(animate);
     }
-
     animate();
   })();
 </script>
