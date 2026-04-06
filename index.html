@@ -346,7 +346,6 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-/* SERVER MODAL */
 .modal {
   position: fixed;
   top: 0; left: 0;
@@ -430,7 +429,6 @@ footer {
 
 .close-btn:hover { transform: scale(1.05); }
 
-/* LIGHTBOX */
 #lightbox {
   position: fixed;
   top: 0; left: 0;
@@ -486,7 +484,6 @@ footer {
   transform: scale(1.1);
 }
 
-/* SKILL CARDS */
 .skill-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -563,7 +560,6 @@ footer {
 .fill-blue { background: linear-gradient(90deg, #1d4ed8, #38bdf8); box-shadow: 0 0 8px rgba(56,189,248,0.5); }
 .fill-green { background: linear-gradient(90deg, #15803d, #4ade80); box-shadow: 0 0 8px rgba(74,222,128,0.5); }
 
-/* PROOF CARDS */
 .proof-card {
   background: rgba(15,23,42,0.85);
   border: 1px solid rgba(56,189,248,0.15);
@@ -834,7 +830,7 @@ footer {
   <section class="section">
     <h2 class="glow section-title">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:10px;margin-bottom:3px;color:#38bdf8;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
-      Experiencia (11 servidores)
+      Experiencia (12 servidores)
     </h2>
     <div class="grid">
       <div class="card" onclick="openModal('MineRush Network')"><img src="mine-rush.png" alt="Logo MineRush"><div class="card-content"><h3>MineRush Network</h3><div class="badge-wrapper"><span class="badge">Founder</span></div></div></div>
@@ -849,7 +845,6 @@ footer {
       <div class="card" onclick="openModal('KeniBox Network')"><img src="keni-box.png" alt="Logo KeniBox"><div class="card-content"><h3>KeniBox Network</h3><div class="badge-wrapper"><span class="badge">Owner</span></div></div></div>
       <div class="card" onclick="openModal('MineIce Network')"><img src="mine-ice.png" alt="Logo MineIce"><div class="card-content"><h3>MineIce Network</h3><div class="badge-wrapper"><span class="badge">Administrador</span></div></div></div>
       <div class="card" onclick="openModal('NightBox Network')"><img src="night-box.png" alt="Logo NightBox"><div class="card-content"><h3>NightBox Network</h3><div class="badge-wrapper"><span class="badge">Señor Administrador</span></div></div></div>
-    </div>
     </div>
   </section>
 </div>
@@ -878,11 +873,10 @@ footer {
       Pruebas | Trabajos
     </h2>
 
-    <!-- PRUEBAS DE RANGOS -->
     <div style="max-width:1200px;margin:0 auto 48px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;padding:0 4px;">
         <div style="width:4px;height:28px;background:#38bdf8;border-radius:999px;flex-shrink:0;"></div>
-        <h3 style="font-size:1.15rem;color:#f1f5f9;font-weight:700;">Pruebas de Rangos <span style="color:#38bdf8;">(5)</span></h3>
+        <h3 style="font-size:1.15rem;color:#f1f5f9;font-weight:700;">Pruebas de Rangos <span style="color:#38bdf8;">(6)</span></h3>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
         <div class="proof-card" onclick="openLightbox('prueba-rango-1.png')">
@@ -905,14 +899,13 @@ footer {
           <div class="proof-img-wrap"><img src="prueba-rango-5.png" alt="Prueba rango 5"></div>
           <div class="proof-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prueba de Rango #5</div>
         </div>
-         <div class="proof-card" onclick="openLightbox('prueba-rango-6.png')">
+        <div class="proof-card" onclick="openLightbox('prueba-rango-6.png')">
           <div class="proof-img-wrap"><img src="prueba-rango-6.png" alt="Prueba rango 6"></div>
           <div class="proof-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Prueba de Rango #6</div>
         </div>
       </div>
     </div>
 
-    <!-- TRABAJOS REALIZADOS -->
     <div style="max-width:1200px;margin:0 auto;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;padding:0 4px;">
         <div style="width:4px;height:28px;background:#4ade80;border-radius:999px;flex-shrink:0;"></div>
@@ -1085,25 +1078,33 @@ footer {
 
   /* SERVER MODAL */
   var data = {
-    "MineRush Network": "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
-    "MineChaos Network": "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
-    "MineGlow Network": "Llegué como Manager por mi experiencia en servidores anteriores. Decidí salirme por la inactividad del servidor y la constante y extensa inactividad de los dueños.",
-    "MineLow Network": "Minelow es el servidor donde actualmente me encuentro trabajando como Sr Mod. Ingresé el 19 de Diciembre del 2025. Este servidor me ha dado una gran cantidad de experiencia y siempre lo recordaré con cariño.",
-    "MineSkill Network": "MineSkill es el servidor donde entré como Manager por mi experiencia en comandos y como organizador del equipo de staff. Actualmente no me encuentro como manager debido a que el servidor fue cerrado ya que el owner no generaba ganancias y no le convenía seguir con el server.",
-    "MineDark Network": "Ingresé a MineDark Network como Manager por mi experiencia y mis conocimientos. Actualmente llevo 1 semana en el cargo y me he encargado de sacar a 2 staff que abusaban de la confianza del dueño, lo que lo ayudó mucho.",
-    "MineDash Network": "MineDash es el proyecto donde me encuentro como Owner, debido a que junto a la administración decidimos unir KeniBox con MineDash junto al streamer TheElivan.",
-    "EgoCraft Network": "EgoCraft es el servidor donde entré como Manager por mi experiencia en comandos y como organizador del equipo de staff. Actualmente me encuentro todavía como Manager, aunque el servidor no ha abierto.",
-    "EskMC Network": "EskMC es un servidor box pvp donde entré directamente como Administrador por mi experiencia como staff y manager, además de los servidores donde he trabajado.",
-    "KeniBox Network": "Kenibox es el proyecto donde actualmente me encuentro como Owner junto a Legendario, quien también es dueño de MineLow. Entré como Founder por mi experiencia en plugins y su configuración, además de que me tienen una gran confianza.",
-    "MineIce Network": "Ingresé a MineIce Network como Administrador por mi experiencia y mis conocimientos, además de que uno de los dueños ya había trabajado conmigo anteriormente. Actualmente no estoy muy online porque el servidor no tiene gente."
-    "NightBox Network": "Ingresé a NightBox Network como Señor Administrador por mi experiencia, también por mis conocimientos en plugins, configuraciones, permisos y más, me agrada trabajar de staff en este servidor porque yo era alguien que le encantaba nightbox y ahora poder trabajar aqui, me fascina."
+    "MineRush Network":   "Llegué como fundador junto a mi compañero Fakerki08 gracias a mi experiencia previa en otros servidores. Ingresé en Agosto de 2024, donde participé activamente en la organización del staff, toma de decisiones y planificación del crecimiento del servidor. Logramos alcanzar hasta 50 usuarios simultáneos, consolidando una comunidad activa. Sin embargo, decidí retirarme debido a diversos problemas internos con el dueño principal que afectaban la estabilidad del proyecto.",
+    "MineChaos Network":  "Este fue un proyecto que inicié junto a mi compañero Fakerki08 el 17 de marzo de 2024. Me encargué de la organización general, estructura del servidor y coordinación del equipo. A pesar del potencial del proyecto, el servidor tuvo que cerrarse debido a la falta de actividad por parte de otros miembros del staff. Además, mi compañero decidió unirse a otra network cuyos métodos de organización no coincidían con los míos, lo que llevó al cierre definitivo del proyecto.",
+    "MineGlow Network":   "Llegué como Manager por mi experiencia en servidores anteriores. Decidí salirme por la inactividad del servidor y la constante y extensa inactividad de los dueños.",
+    "MineLow Network":    "Minelow es el servidor donde actualmente me encuentro trabajando como Sr Mod. Ingresé el 19 de Diciembre del 2025. Este servidor me ha dado una gran cantidad de experiencia y siempre lo recordaré con cariño.",
+    "MineSkill Network":  "MineSkill es el servidor donde entré como Manager por mi experiencia en comandos y como organizador del equipo de staff. Actualmente no me encuentro como manager debido a que el servidor fue cerrado ya que el owner no generaba ganancias y no le convenía seguir con el server.",
+    "MineDark Network":   "Ingresé a MineDark Network como Manager por mi experiencia y mis conocimientos. Actualmente llevo 1 semana en el cargo y me he encargado de sacar a 2 staff que abusaban de la confianza del dueño, lo que lo ayudó mucho.",
+    "MineDash Network":   "MineDash es el proyecto donde me encuentro como Owner, debido a que junto a la administración decidimos unir KeniBox con MineDash junto al streamer TheElivan.",
+    "EgoCraft Network":   "EgoCraft es el servidor donde entré como Manager por mi experiencia en comandos y como organizador del equipo de staff. Actualmente me encuentro todavía como Manager, aunque el servidor no ha abierto.",
+    "EskMC Network":      "EskMC es un servidor box pvp donde entré directamente como Administrador por mi experiencia como staff y manager, además de los servidores donde he trabajado.",
+    "KeniBox Network":    "Kenibox es el proyecto donde actualmente me encuentro como Owner junto a Legendario, quien también es dueño de MineLow. Entré como Founder por mi experiencia en plugins y su configuración, además de que me tienen una gran confianza.",
+    "MineIce Network":    "Ingresé a MineIce Network como Administrador por mi experiencia y mis conocimientos, además de que uno de los dueños ya había trabajado conmigo anteriormente. Actualmente no estoy muy online porque el servidor no tiene gente.",
+    "NightBox Network":   "Ingresé a NightBox Network como Señor Administrador por mi experiencia, también por mis conocimientos en plugins, configuraciones, permisos y más, me agrada trabajar de staff en este servidor porque yo era alguien que le encantaba nightbox y ahora poder trabajar aqui, me fascina."
   };
 
   var statusMap = {
-    "MineRush Network": "offline", "MineChaos Network": "offline", "MineGlow Network": "offline",
-    "MineLow Network": "online", "MineSkill Network": "offline", "MineDark Network": "online",
-    "MineDash Network": "online", "EgoCraft Network": "online", "EskMC Network": "online",
-    "KeniBox Network": "online", "MineIce Network": "offline", "NightBox Network": "online"
+    "MineRush Network":   "offline",
+    "MineChaos Network":  "offline",
+    "MineGlow Network":   "offline",
+    "MineLow Network":    "online",
+    "MineSkill Network":  "offline",
+    "MineDark Network":   "online",
+    "MineDash Network":   "online",
+    "EgoCraft Network":   "online",
+    "EskMC Network":      "online",
+    "KeniBox Network":    "online",
+    "MineIce Network":    "offline",
+    "NightBox Network":   "online"
   };
 
   function openModal(name) {
